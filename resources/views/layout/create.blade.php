@@ -18,7 +18,7 @@
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="row">
-            @yield('isi')
+            @yield('konten')
           </div>
         </div>
         <!-- content-wrapper ends -->
