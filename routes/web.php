@@ -24,3 +24,7 @@ Route::get('/dashboard', function () {
 Route::get('/admin_add', function () {
     return view('pages/admin_add');
 });
+
+Route::get('/admin', function () {
+    return view('pages/admin');
+});
