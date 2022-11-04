@@ -1,7 +1,7 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
       <li class="nav-item">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{url('dashboard')}}">
           <i class="mdi mdi-grid-large menu-icon"></i>
           <span class="menu-title">Dashboard</span>
         </a>
@@ -10,15 +10,15 @@
       <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
           <i class="menu-icon mdi mdi-account-multiple"></i>
-          <span class="menu-title">Karyawan</span>
+          <span class="menu-title">Pengguna</span>
           <i class="menu-arrow"></i> 
         </a>
         <div class="collapse" id="ui-basic">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Administrator</a></li>
-            <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Apoteker</a></li>
-            <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Dokter</a></li>
-            <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Karyawan</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{url('administrator')}}">Administrator</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{url('apoteker')}}">Apoteker</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{url('dokter')}}">Dokter</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{url('karyawan')}}">Karyawan</a></li>
           </ul>
         </div>
       </li>

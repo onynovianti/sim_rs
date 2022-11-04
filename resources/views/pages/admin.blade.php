@@ -21,10 +21,10 @@
                   Username
                 </th>
                 <th>
-                  Nomor HP
+                  Kontak
                 </th>
                 <th>
-                  Alamat
+                  Aksi
                 </th>
               </tr>
             </thead>
@@ -40,10 +40,18 @@
                   hermanbeck
                 </td>
                 <td>
-                  088217382931
+                  <i class="menu-icon mdi mdi-phone"></i>
+                  088217382931 <hr>
+                  <i class="menu-icon mdi mdi-home-map-marker"></i>
+                  Jl. Ahmad Yani, Gayungan, Surabaya
                 </td>
                 <td>
-                  Jl. Ahmad Yani, Gayungan, Surabaya
+                  <button type="button" class="btn btn-warning btn-rounded btn-icon btn-sm">
+                    <i class="mdi mdi-lead-pencil"></i>
+                  </button>
+                  <button type="button" class="btn btn-danger btn-rounded btn-icon btn-sm">
+                    <i class="mdi mdi-delete-forever"></i>
+                  </button>
                 </td>
               </tr>
               <tr>
@@ -57,10 +65,18 @@
                   adamesssy
                 </td>
                 <td>
-                  081627382939
+                  <i class="menu-icon mdi mdi-phone"></i>
+                  081627382939 <hr>
+                  <i class="menu-icon mdi mdi-home-map-marker"></i>
+                  Jl. Panji Suroso, Malang
                 </td>
                 <td>
-                  Jl. Panji Suroso, Malang
+                  <button type="button" class="btn btn-warning btn-rounded btn-icon btn-sm">
+                    <i class="mdi mdi-lead-pencil"></i>
+                  </button>
+                  <button type="button" class="btn btn-danger btn-rounded btn-icon btn-sm">
+                    <i class="mdi mdi-delete-forever"></i>
+                  </button>
                 </td>
               </tr>
               <tr>
@@ -74,10 +90,18 @@
                   richardss
                 </td>
                 <td>
-                  081920381829
+                  <i class="menu-icon mdi mdi-phone"></i>
+                  081920381829 <hr>
+                  <i class="menu-icon mdi mdi-home-map-marker"></i>
+                  Jl. Imam Bonjol, Lumajang
                 </td>
                 <td>
-                  Jl. Imam Bonjol, Lumajang
+                  <button type="button" class="btn btn-warning btn-rounded btn-icon btn-sm">
+                    <i class="mdi mdi-lead-pencil"></i>
+                  </button>
+                  <button type="button" class="btn btn-danger btn-rounded btn-icon btn-sm">
+                    <i class="mdi mdi-delete-forever"></i>
+                  </button>
                 </td>
               </tr>
               <tr>
@@ -91,10 +115,18 @@
                   petermagic
                 </td>
                 <td>
-                  087272984721
+                  <i class="menu-icon mdi mdi-phone"></i>
+                  087272984721 <hr>
+                  <i class="menu-icon mdi mdi-home-map-marker"></i>
+                  Jl. Bromo, Probolinggo
                 </td>
                 <td>
-                  Jl. Bromo, Probolinggo
+                  <button type="button" class="btn btn-warning btn-rounded btn-icon btn-sm">
+                    <i class="mdi mdi-lead-pencil"></i>
+                  </button>
+                  <button type="button" class="btn btn-danger btn-rounded btn-icon btn-sm">
+                    <i class="mdi mdi-delete-forever"></i>
+                  </button>
                 </td>
               </tr>
               <tr>
@@ -108,10 +140,18 @@
                   edd_ward
                 </td>
                 <td>
-                  081728292712
+                  <i class="menu-icon mdi mdi-phone"></i>
+                  081728292712 <hr>
+                  <i class="menu-icon mdi mdi-home-map-marker"></i>
+                  Jl. D.I. Panjaitan, Pasuruan
                 </td>
                 <td>
-                  Jl. D.I. Panjaitan, Pasuruan
+                  <button type="button" class="btn btn-warning btn-rounded btn-icon btn-sm">
+                    <i class="mdi mdi-lead-pencil"></i>
+                  </button>
+                  <button type="button" class="btn btn-danger btn-rounded btn-icon btn-sm">
+                    <i class="mdi mdi-delete-forever"></i>
+                  </button>
                 </td>
               </tr>
             </tbody>

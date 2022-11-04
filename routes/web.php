@@ -29,6 +29,6 @@ Route::get('/admin_edit', function () {
     return view('pages/admin_edit');
 });
 
-Route::get('/admin', function () {
+Route::get('/administrator', function () {
     return view('pages/admin');
 });
