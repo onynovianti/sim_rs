@@ -25,6 +25,10 @@ Route::get('/admin_add', function () {
     return view('pages/admin_add');
 });
 
+Route::get('/admin_edit', function () {
+    return view('pages/admin_edit');
+});
+
 Route::get('/admin', function () {
     return view('pages/admin');
 });
