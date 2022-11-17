@@ -41,7 +41,7 @@ class AdminController extends Controller
 
     // Tampilan Edit
     public function edit($id){
-        return view("admin.user_editadmin",[
+        return view("pages.admin_edit",[
             'title' => 'User - Edit Admin',
             'item' => Admin::find($id),
         ]);
@@ -50,25 +50,35 @@ class AdminController extends Controller
     // Simpan Hasil Edit
     public function update(Request $request, $id){
         $validatedData=$request->validate([
-            'name' => 'required|min:5',
-            'email' => 'required',
+            'namaLengkap' => 'required',
+            'username' => 'required|min:5',
+            'alamat' => 'required|min:5',
+            'noHp' => 'required',
+            'jenisKelamin' => 'required',
+            'tempatLahir' => 'required',
+            'tanggalLahir' => 'required',
         ]);
 
         // Menyimpan update
-    	$user = User::find($id);
-    	$user->name = $request->name;
-        $user->email = $request->email;
+    	$user = Admin::find($id);
+    	$user->namaLengkap = $request->namaLengkap;
+        $user->username = $request->username;
+        $user->alamat = $request->alamat;
+        $user->noHp = $request->noHp;
+        $user->jenisKelamin = $request->jenisKelamin;
+        $user->tempatLahir = $request->tempatLahir;
+        $user->tanggalLahir = $request->tanggalLahir;
     	$user->save();
     	
-        toast('Your data has been saved!','success');
-    	return redirect("/user_admin"); // untuk diarahkan kemana
+        // toast('Your data has been saved!','success');
+    	return redirect("/admin"); // untuk diarahkan kemana
     }
 
     // Hapus Data User
     public function destroy(Request $request, $id){
-    	User::destroy($id);
+    	Admin::destroy($id);
     	// Session::flash('hapussuccess', 'Data berhasil dihapus!');
-        toast('Your data has been deleted!','success');
-    	return redirect("/user_admin"); // untuk diarahkan kemana
+        // toast('Your data has been deleted!','success');
+    	return redirect("/admin"); // untuk diarahkan kemana
     }  
 }
