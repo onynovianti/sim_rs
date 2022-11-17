@@ -54,6 +54,15 @@
                 <div class="form-group">
                   <input name="password" type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password">
                 </div>
+                <div class="form-group">
+                  <label for="exampleFormControlSelect2">Select Role</label>
+                  <select class="form-control" id="exampleFormControlSelect2" name="role">
+                    <option value="admin">Admin</option>
+                    <option value="apoteker">Apoteker</option>
+                    <option value="dokter">Dokter</option>
+                    <option value="karyawan">Karyawan</option>
+                  </select>
+                </div>
                 <div class="mt-3">
                   <button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" type="submit">SIGN IN</button>
                 </div>

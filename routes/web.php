@@ -21,12 +21,12 @@ Route::get('/', function () {
     return view('pages/login');
 });
 
-Route::resource('/auth', AuthController::class);
-
 Route::resource('/admin', AdminController::class);
 
 Route::resource('/dokter', DokterController::class);
 
+Route::post('/auth',[AuthController::class,'store']);
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/admin_add', function () {
     return view('pages/admin_add');

@@ -20,23 +20,31 @@ class AuthController extends Controller
     // Cek login
     public function store(Request $request){
         
-        //jika username ada 
-        $request->role='admin';
+        //jika username ada
         switch($request->role){
             case "admin" :
                 $user = DB::table('admins')->where('username', $request->username)->first();
                 break;
+            case 'dokter':
+                $user = DB::table('dokters')->where('username', $request->username)->first();
+                break;
+            case "apoteker" :
+                $user = DB::table('apotekers')->where('username', $request->username)->first();
+                break;
+            case "karyawan" :
+                $user = DB::table('karyawans')->where('username', $request->username)->first();
+                break;
         }
-        
+
+        //jika password benar
         if($user){
-            //jika password benar
             if(Hash::check($request->password,$user->password)){
                 session([
                     'isLogin' => true,
                     'id' => $user->id,
                     'username' => $user->username,
                     ]);
-                return redirect('/admin');
+                return redirect('/'.$request->role);
             }
             
             //jika password salah
