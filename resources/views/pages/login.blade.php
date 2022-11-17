@@ -37,13 +37,13 @@
               <h6 class="fw-light">Sign in to continue.</h6>
               @if(session('error_username'))
                         <div class="alert alert-danger my-4">
-                            {{session('username')}}
+                            {{ session('error_username') }}
                             </div>
                         @endif
                         
-                        @if(session('password'))
+                        @if(session('error_password'))
                         <div class="alert alert-danger my-4">
-                            {{session('password')}}
+                            {{ session('error_password') }}
                         </div>
                         @endif
               <form class="pt-3" method="post" action="/auth">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Alert;
 
 class AuthController extends Controller
 {
@@ -41,18 +42,20 @@ class AuthController extends Controller
             if(Hash::check($request->password,$user->password)){
                 session([
                     'isLogin' => true,
+                    'role' => $request->role,
                     'id' => $user->id,
                     'username' => $user->username,
+                    'namaLengkap' => $user->namaLengkap,
                     ]);
-                return redirect('/'.$request->role);
+                // return redirect('/'.$request->role);
+                return redirect('/dashboard');
             }
-            
             //jika password salah
-            return redirect('/')->with('password', 'Password tidak cocok');
+            return redirect('/')->with('error_password', 'Password Tidak Cocok');
         }
         
         //jika username tidak ada
-        return redirect('/')->with('error_username', 'Username tidak cocok');
+        return redirect('/')->with('error_username', 'Username Tidak Ditemukan');
     }
     
     // Logout
