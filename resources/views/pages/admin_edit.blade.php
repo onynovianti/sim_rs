@@ -5,7 +5,7 @@
   <div class="card">
     <div class="card-body">
       <h4 class="card-title">Edit Administrator</h4>
-      <form class="form-sample">
+      <form class="form-sample" method="POST" action="admin/{{ $item->id }}"> @csrf @method('PUT') 
         <p class="card-description">
           Personal info
         </p>
@@ -14,7 +14,7 @@
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Nama Lengkap</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control" value="yohansaputra"/>
+                <input type="text" class="form-control" value="{{ $item->namaLengkap }}"/>
               </div>
             </div>
           </div>
@@ -22,7 +22,7 @@
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Tanggal Lahir</label>
               <div class="col-sm-9">
-                <input class="form-control" placeholder="dd/mm/yyyy" value="25/10/2000"/>
+                <input class="form-control" placeholder="yyyy-mm-dd" value="{{ $item->tanggalLahir }}"/>
               </div>
             </div>
           </div>
@@ -32,7 +32,7 @@
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Username</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control" value="yohanputra"/>
+                <input type="text" class="form-control" value="{{ $item->username }}"/>
               </div>
             </div>
           </div>
@@ -40,7 +40,7 @@
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Tempat Lahir</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control" value="Surabaya"/>
+                <input type="text" class="form-control" value="{{ $item->tempatLahir }}"/>
               </div>
             </div>
           </div>
@@ -50,7 +50,7 @@
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Password</label>
               <div class="col-sm-9">
-                <input type="password" class="form-control" value="12345678"/>
+                <input type="password" class="form-control" value="{{ $item->password }}"/>
               </div>
             </div>
           </div>
@@ -60,7 +60,7 @@
               <div class="col-sm-4">
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input type="radio" class="form-check-input" name="membershipRadios" id="membershipRadios1" value="" checked>
+                    <input type="radio" class="form-check-input" name="jenisKelamin" id="membershipRadios1" value="0" {{  }}>
                     Laki-laki
                   </label>
                 </div>
@@ -68,20 +68,10 @@
               <div class="col-sm-5">
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input type="radio" class="form-check-input" name="membershipRadios" id="membershipRadios2" value="option2">
+                    <input type="radio" class="form-check-input" name="jenisKelamin" id="membershipRadios2" value="1">
                     Perempuan
                   </label>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group row">
-              <label class="col-sm-3 col-form-label">Confirm Password</label>
-              <div class="col-sm-9">
-                <input type="password" class="form-control" value="12345678"/>
               </div>
             </div>
           </div>
@@ -94,7 +84,7 @@
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Alamat</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control" value="Jl. Kusuma Bangsa, Surabaya"/>
+                <input type="text" class="form-control" value="{{ $item->alamat }}"/>
               </div>
             </div>
           </div>
@@ -102,7 +92,7 @@
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Nomor HP</label>
               <div class="col-sm-9">
-                <input type="numer" class="form-control" value="081222839482"/>
+                <input type="numer" class="form-control" value="{{ $item->noHp }}"/>
               </div>
             </div>
           </div>
