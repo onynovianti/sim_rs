@@ -9,6 +9,10 @@ use Alert;
 
 class AdminController extends Controller
 {
+    public function __construct(){
+        return $this->middleware('admin') && $this->middleware('login');
+    }
+    
     // DASHBOARD
     public function index(){
        return view('pages.admin',[
@@ -33,6 +37,7 @@ class AdminController extends Controller
             'tempatLahir' => 'required',
             'tanggalLahir' => 'required',
         ]);
+        $validatedData=bcrypt($request->password);
         Admin::create($validatedData); //untuk menyimpan data
         
         // toast('Registration has been successful','success');
