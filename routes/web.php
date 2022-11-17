@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ApiController;
+use App\Http\Controllers\DokterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +21,12 @@ Route::get('/', function () {
     return view('pages/login');
 });
 
-Route::get('/dashboard', function () {
-    return view('pages/dashboard');
-});
+Route::resource('/auth', AuthController::class);
+
+Route::resource('/dashboard', AdminController::class)->middleware('admin');
+
+Route::resource('/dokter', DokterController::class);
+
 
 Route::get('/admin_add', function () {
     return view('pages/admin_add');
@@ -32,3 +39,5 @@ Route::get('/admin_edit', function () {
 Route::get('/administrator', function () {
     return view('pages/admin');
 });
+
+Route::get('get_medical_api/{id}',[ApiController::class,'callApi']);
