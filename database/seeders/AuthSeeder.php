@@ -16,8 +16,8 @@ class AuthSeeder extends Seeder
      */
     public function run()
     {   $faker = Faker::create('id_ID');
-        DB::table('admins')->insert([
-            'id' => $faker->randomNumber($nbDigits = null, $strict = false),
+        DB::table('admins')->insert(
+            [ // ADMIN
             'namaLengkap' => 'Narendra Saputra',
             'username' => 'narendra',
             'password' => bcrypt('narendra'),
@@ -28,6 +28,43 @@ class AuthSeeder extends Seeder
             'tanggalLahir' => '2000-12-22',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
-            ]);
+            ],
+            [ // APOTEKER
+            'namaLengkap' => 'Dicky Mahessa',
+            'username' => 'dickyyy',
+            'password' => bcrypt('1234567890'),
+            'alamat' => $faker->city,
+            'noHp' => '081276535467',
+            'jenisKelamin' => 0,
+            'tempatLahir' => $faker->city,
+            'tanggalLahir' => '2001-08-18',
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
+            ],
+            [ // DOKTER
+            'namaLengkap' => 'Ony Novianti',
+            'username' => 'onynovianti',
+            'password' => bcrypt('onynovianti'),
+            'alamat' => $faker->city,
+            'noHp' => '08821443534',
+            'jenisKelamin' => 1,
+            'tempatLahir' => $faker->city,
+            'tanggalLahir' => '2001-10-10',
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
+            ],
+            [ // KARYAWAN
+            'namaLengkap' => 'Nanda Setiawan',
+            'username' => 'setiawananda',
+            'password' => bcrypt('1234567890'),
+            'alamat' => $faker->city,
+            'noHp' => '089526545324',
+            'jenisKelamin' => 0,
+            'tempatLahir' => $faker->city,
+            'tanggalLahir' => '2001-06-18',
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
+            ]
+        );
     }
 }

@@ -9,6 +9,10 @@ use Alert;
 
 class ApotekerController extends Controller
 {
+    public function __construct(){
+        return $this->middleware('admin') && $this->middleware('login');
+    }
+    
     // DASHBOARD
     public function index(){
        return view('pages.apoteker', [
@@ -33,6 +37,7 @@ class ApotekerController extends Controller
             'tempatLahir' => 'required',
             'tanggalLahir' => 'required',
         ]);
+        $validatedData['password']=bcrypt($validatedData['password']);
         Apoteker::create($validatedData); //untuk menyimpan data
 
         // toast('Registration has been successful','success');
