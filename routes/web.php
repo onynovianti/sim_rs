@@ -40,4 +40,13 @@ Route::get('/dashboard', function () {
     return view('pages/dashboard');
 });
 
+Route::resource('/karyawan', KaryawanController::class);
+Route::get('/karyawan_add', function () {
+    return view('pages/karyawan_add');
+});
+
+Route::get('/karyawan_edit', function () {
+    return view('pages/karyawan_edit');
+});
+
 Route::get('get_medical_api/{id}',[ApiController::class,'callApi']);
