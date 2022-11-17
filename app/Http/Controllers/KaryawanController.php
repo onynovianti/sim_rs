@@ -40,7 +40,7 @@ class KaryawanController extends Controller
  
      // Tampilan Edit
      public function edit($id){
-         return view("karyawan.user_editkaryawan",[
+         return view("pages.karyawan_edit",[
              'title' => 'User - Edit Karyawan',
              'item' => Karyawan::find($id),
          ]);
@@ -48,26 +48,34 @@ class KaryawanController extends Controller
          
      // Simpan Hasil Edit
      public function update(Request $request, $id){
-         $validatedData=$request->validate([
-             'name' => 'required|min:5',
-             'email' => 'required',
-         ]);
- 
-         // Menyimpan update
-         $user = Karyawan::find($id);
-         $user->name = $request->name;
-         $user->email = $request->email;
-         $user->save();
-         
-         toast('Your data has been saved!','success');
-         return redirect("/user_karyawan"); // untuk diarahkan kemana
+        $validatedData=$request->validate([
+            'namaLengkap' => 'required',
+            'username' => 'required|min:5',
+            'alamat' => 'required|min:5',
+            'noHp' => 'required',
+            'jenisKelamin' => 'required',
+            'tempatLahir' => 'required',
+            'tanggalLahir' => 'required',
+        ]);
+
+        // Menyimpan update data karyawan
+    	$user = Karyawan::find($id);
+    	$user->namaLengkap = $request->namaLengkap;
+        $user->username = $request->username;
+        $user->alamat = $request->alamat;
+        $user->noHp = $request->noHp;
+        $user->jenisKelamin = $request->jenisKelamin;
+        $user->tempatLahir = $request->tempatLahir;
+        $user->tanggalLahir = $request->tanggalLahir;
+    	$user->save();
+    	
+        // toast('Your data has been saved!','success');
+    	return redirect("/karyawan"); // untuk diarahkan kemana
      }
  
      // Hapus Data User
      public function destroy(Request $request, $id){
          Karyawan::destroy($id);
-         // Session::flash('hapussuccess', 'Data berhasil dihapus!');
-         toast('Your data has been deleted!','success');
-         return redirect("/user_karyawan"); // untuk diarahkan kemana
+         return redirect("/karyawan"); // untuk diarahkan kemana
      }
 }
