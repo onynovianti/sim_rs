@@ -7,7 +7,6 @@ use App\Http\Controllers\ApiController;
 use App\Http\Controllers\ApotekerController;
 use App\Http\Controllers\DokterController;
 use App\Http\Controllers\KaryawanController;
-use App\Http\Controllers\DashboardController;  
 
 /*
 |--------------------------------------------------------------------------
