@@ -10,6 +10,7 @@
         <p class="card-description">
           Personal info
         </p>
+        {{-- pengeditan data karyawan --}}
         <div class="row">
           <div class="col-md-6">
             <div class="form-group row">

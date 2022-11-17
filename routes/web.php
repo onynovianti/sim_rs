@@ -41,6 +41,7 @@ Route::get('/dashboard', function () {
     return view('pages/dashboard');
 });
 
+// karyawan
 Route::resource('/karyawan', KaryawanController::class);
 Route::get('/karyawan_add', function () {
     return view('pages/karyawan_add');

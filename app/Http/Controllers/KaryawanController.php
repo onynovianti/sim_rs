@@ -58,7 +58,7 @@ class KaryawanController extends Controller
             'tanggalLahir' => 'required',
         ]);
 
-        // Menyimpan update
+        // Menyimpan update data karyawan
     	$user = Karyawan::find($id);
     	$user->namaLengkap = $request->namaLengkap;
         $user->username = $request->username;

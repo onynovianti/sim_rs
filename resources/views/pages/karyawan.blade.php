@@ -8,6 +8,7 @@
         <p class="card-description">
           <a href="/karyawan/create" class="btn btn-primary float-end btn-sm" style="margin-right: 10px">+ Tambah</a><br>
         </p>
+        {{-- tampilan data karyawan  --}}
         <div class="table-responsive">
           <table class="table table-hover">
             <thead>
