@@ -8,6 +8,10 @@ use App\Models\Karyawan;
 
 class KaryawanController extends Controller
 {
+    public function __construct(){
+        return $this->middleware('admin') && $this->middleware('login');
+    }
+
     // DASHBOARD
     public function index(){
         return view('pages.karyawan',[
@@ -32,6 +36,7 @@ class KaryawanController extends Controller
              'tempatLahir' => 'required',
              'tanggalLahir' => 'required',
          ]);
+         $validatedData['password']=bcrypt($validatedData['password']);
          Karyawan::create($validatedData); //untuk menyimpan data
          
          // toast('Registration has been successful','success');

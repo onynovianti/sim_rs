@@ -28,7 +28,9 @@ class AuthSeeder extends Seeder
             'tanggalLahir' => '2000-12-22',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
-            ],
+            ]
+        );
+        DB::table('apotekers')->insert(
             [ // APOTEKER
             'namaLengkap' => 'Dicky Mahessa',
             'username' => 'dickyyy',
@@ -41,10 +43,12 @@ class AuthSeeder extends Seeder
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
             ],
+        );
+        DB::table('dokters')->insert(
             [ // DOKTER
             'namaLengkap' => 'Ony Novianti',
-            'username' => 'onynovianti',
-            'password' => bcrypt('onynovianti'),
+            'username' => 'onynov',
+            'password' => bcrypt('1234567890'),
             'alamat' => $faker->city,
             'noHp' => '08821443534',
             'jenisKelamin' => 1,
@@ -53,6 +57,8 @@ class AuthSeeder extends Seeder
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
             ],
+        );
+        DB::table('karyawans')->insert(
             [ // KARYAWAN
             'namaLengkap' => 'Nanda Setiawan',
             'username' => 'setiawananda',
