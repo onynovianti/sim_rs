@@ -23,7 +23,7 @@ Route::get('/', function () {
 
 Route::resource('/auth', AuthController::class);
 
-Route::resource('/dashboard', AdminController::class)->middleware('admin');
+Route::resource('/admin', AdminController::class);
 
 Route::resource('/dokter', DokterController::class);
 
@@ -36,8 +36,8 @@ Route::get('/admin_edit', function () {
     return view('pages/admin_edit');
 });
 
-Route::get('/administrator', function () {
-    return view('pages/admin');
+Route::get('/dashboard', function () {
+    return view('pages/dashboard');
 });
 
 Route::get('get_medical_api/{id}',[ApiController::class,'callApi']);

@@ -60,7 +60,7 @@
               <div class="col-sm-4">
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input type="radio" class="form-check-input" name="jenisKelamin" id="membershipRadios1" value="0" {{  }}>
+                    <input type="radio" class="form-check-input" name="jenisKelamin" id="membershipRadios1" value="0" {{ @if($item->jenisKelamin == 1) "checked" }}>
                     Laki-laki
                   </label>
                 </div>

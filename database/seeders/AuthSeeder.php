@@ -16,7 +16,7 @@ class AuthSeeder extends Seeder
      */
     public function run()
     {   $faker = Faker::create('id_ID');
-        DB::table('admin')->insert([
+        DB::table('admins')->insert([
             'id' => $faker->randomNumber($nbDigits = null, $strict = false),
             'namaLengkap' => 'Narendra Saputra',
             'username' => 'narendra',

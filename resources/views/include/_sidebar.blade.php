@@ -15,7 +15,7 @@
         </a>
         <div class="collapse" id="ui-basic">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="{{url('administrator')}}">Administrator</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{url('admin')}}">Administrator</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{url('apoteker')}}">Apoteker</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{url('dokter')}}">Dokter</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{url('karyawan')}}">Karyawan</a></li>

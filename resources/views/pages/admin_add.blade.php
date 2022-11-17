@@ -5,7 +5,7 @@
   <div class="card">
     <div class="card-body">
       <h4 class="card-title">Tambah Administrator</h4>
-      <form class="form-sample">
+      <form class="form-sample" method="POST" action="/admin">@csrf
         <p class="card-description">
           Personal info
         </p>
@@ -14,7 +14,12 @@
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Nama Lengkap</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control" />
+                <input type="text" name="namaLengkap" class="form-control" />
+                @error('namaLengkap')
+                        <code>
+                          {{ $message }}
+                        </code>
+                          @enderror
               </div>
             </div>
           </div>
@@ -22,7 +27,12 @@
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Tanggal Lahir</label>
               <div class="col-sm-9">
-                <input class="form-control" placeholder="dd/mm/yyyy"/>
+                <input class="form-control" name="tanggalLahir" placeholder="yyyy-mm-dd" type="text"/>
+                @error('tanggalLahir')
+                        <code>
+                          {{ $message }}
+                        </code>
+                          @enderror
               </div>
             </div>
           </div>
@@ -32,7 +42,12 @@
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Username</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control" />
+                <input type="text" name="username" class="form-control" />
+                @error('username')
+                        <code>
+                          {{ $message }}
+                        </code>
+                          @enderror
               </div>
             </div>
           </div>
@@ -40,7 +55,12 @@
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Tempat Lahir</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control" />
+                <input type="text" name="tempatLahir" class="form-control" />
+                @error('tempatLahir')
+                        <code>
+                          {{ $message }}
+                        </code>
+                          @enderror
               </div>
             </div>
           </div>
@@ -50,7 +70,12 @@
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Password</label>
               <div class="col-sm-9">
-                <input type="password" class="form-control" />
+                <input type="password" name="password" class="form-control" />
+                @error('password')
+                        <code>
+                          {{ $message }}
+                        </code>
+                          @enderror
               </div>
             </div>
           </div>
@@ -60,7 +85,7 @@
               <div class="col-sm-4">
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input type="radio" class="form-check-input" name="membershipRadios" id="membershipRadios1" value="" checked>
+                    <input type="radio" class="form-check-input" name="jenisKelamin" id="jenisKelamin1" value="0" checked>
                     Laki-laki
                   </label>
                 </div>
@@ -68,21 +93,16 @@
               <div class="col-sm-5">
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input type="radio" class="form-check-input" name="membershipRadios" id="membershipRadios2" value="option2">
+                    <input type="radio" class="form-check-input" name="jenisKelamin" id="jenisKelamin2" value="1">
                     Perempuan
                   </label>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group row">
-              <label class="col-sm-3 col-form-label">Confirm Password</label>
-              <div class="col-sm-9">
-                <input type="password" class="form-control" />
-              </div>
+              @error('jenisKelamin')
+                        <code>
+                          {{ $message }}
+                        </code>
+                          @enderror
             </div>
           </div>
         </div>
@@ -94,7 +114,12 @@
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Alamat</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control" />
+                <input type="text" name="alamat" class="form-control" />
+                @error('alamat')
+                        <code>
+                          {{ $message }}
+                        </code>
+                          @enderror
               </div>
             </div>
           </div>
@@ -102,7 +127,12 @@
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Nomor HP</label>
               <div class="col-sm-9">
-                <input type="numer" class="form-control" />
+                <input type="text" name="noHp" class="form-control" />
+                @error('noHp')
+                        <code>
+                          {{ $message }}
+                        </code>
+                          @enderror
               </div>
             </div>
           </div>

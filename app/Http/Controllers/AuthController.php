@@ -24,7 +24,7 @@ class AuthController extends Controller
         $request->role='admin';
         switch($request->role){
             case "admin" :
-                $user = DB::table('admin')->where('username', $request->username)->first();
+                $user = DB::table('admins')->where('username', $request->username)->first();
                 break;
         }
         
@@ -36,7 +36,7 @@ class AuthController extends Controller
                     'id' => $user->id,
                     'username' => $user->username,
                     ]);
-                return redirect('/dashboard');
+                return redirect('/admin');
             }
             
             //jika password salah
