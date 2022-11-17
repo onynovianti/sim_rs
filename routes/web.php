@@ -6,6 +6,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\ApotekerController;
 use App\Http\Controllers\DokterController;
+use App\Http\Controllers\ApotekerController;
+use App\Http\Controllers\KaryawanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,14 +24,9 @@ Route::get('/', function () {
     return view('pages/login');
 });
 
-Route::resource('/auth', AuthController::class);
-
-Route::resource('/admin', AdminController::class);
-
-Route::resource('/dokter', DokterController::class);
-
-Route::resource('/apoteker', ApotekerController::class);
-
+Route::get('/dashboard', function () {
+    return view('pages/dashboard');
+});
 
 Route::get('/admin_add', function () {
     return view('pages/admin_add');
@@ -37,10 +34,6 @@ Route::get('/admin_add', function () {
 
 Route::get('/admin_edit', function () {
     return view('pages/admin_edit');
-});
-
-Route::get('/dashboard', function () {
-    return view('pages/dashboard');
 });
 
 Route::get('/apoteker', function () {
@@ -54,5 +47,13 @@ Route::get('/apoteker_add', function () {
 Route::get('/apoteker_edit', function () {
     return view('pages/apoteker_edit');
 });
+
+=======
+Route::resource('/admin', AdminController::class);
+Route::resource('/dokter', DokterController::class);
+Route::resource('/apoteker', ApotekerController::class);
+Route::resource('/karyawan', KaryawanController::class);
+Route::post('/auth',[AuthController::class,'store']);
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('get_medical_api/{id}',[ApiController::class,'callApi']);

@@ -6,14 +6,14 @@
           <span class="menu-title">Dashboard</span>
         </a>
       </li>
-      <li class="nav-item nav-category">Administrator</li>
-      <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+      <li class="nav-item nav-category" {{ (session('role')=="admin")? "style=display:block" : "style=display:none" }} >Administrator</li>
+      <li class="nav-item" {{ (session('role')=="admin")? "style=display:block" : "style=display:none" }}>
+        <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" {{ (session('role')=="admin")? "aria-expanded=true" : "aria-expanded=false" }} aria-controls="ui-basic">
           <i class="menu-icon mdi mdi-account-multiple"></i>
           <span class="menu-title">Pengguna</span>
           <i class="menu-arrow"></i> 
         </a>
-        <div class="collapse" id="ui-basic">
+        <div class="collapse {{ (session('role')=="admin")? "show" : "" }}" id="ui-basic">
           <ul class="nav flex-column sub-menu">
             <li class="nav-item"> <a class="nav-link" href="{{url('admin')}}">Administrator</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{url('apoteker')}}">Apoteker</a></li>
@@ -22,41 +22,41 @@
           </ul>
         </div>
       </li>
-      <li class="nav-item nav-category">Apoteker</li>
-      <li class="nav-item">
+      <li class="nav-item nav-category" {{ (session('role')=="apoteker")? "style=display:block" : "style=display:none" }}>Apoteker</li>
+      <li class="nav-item" {{ (session('role')=="apoteker")? "style=display:block" : "style=display:none" }}>
         <a class="nav-link" href="http://bootstrapdash.com/demo/star-admin2-free/docs/documentation.html">
           <i class="menu-icon mdi mdi-pill"></i>
           <span class="menu-title">Obat</span>
         </a>
       </li>
-      <li class="nav-item nav-category">Dokter</li>
-      <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+      <li class="nav-item nav-category" {{ (session('role')=="dokter")? "style=display:block" : "style=display:none" }}>Dokter</li>
+      <li class="nav-item" {{ (session('role')=="dokter")? "style=display:block" : "style=display:none" }}>
+        <a class="nav-link" data-bs-toggle="collapse" href="#auth" {{ (session('role')=="dokter")? "aria-expanded=true" : "aria-expanded=false" }} aria-controls="auth">
           <i class="menu-icon mdi mdi-stethoscope"></i>
           <span class="menu-title">Diagnosis</span>
           <i class="menu-arrow"></i>
         </a>
-        <div class="collapse" id="auth">
+        <div class="collapse {{ (session('role')=="dokter")? "show" : "" }} " id="auth">
           <ul class="nav flex-column sub-menu">
             <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Penyakit </a></li>
             <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Rekam Medis </a></li>
           </ul>
         </div>
       </li>
-      <li class="nav-item nav-category">Karyawan</li>
-      <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#pasien" aria-expanded="false" aria-controls="pasien">
+      <li class="nav-item nav-category" {{ (session('role')=="karyawan")? "style=display:block" : "style=display:none" }}>Karyawan</li>
+      <li class="nav-item" {{ (session('role')=="karyawan")? "style=display:block" : "style=display:none" }}>
+        <a class="nav-link" data-bs-toggle="collapse" href="#pasien" {{ (session('role')=="karyawan")? "aria-expanded=true" : "aria-expanded=false" }} aria-controls="pasien">
           <i class="menu-icon mdi mdi-account-card-details"></i>
           <span class="menu-title">Pasien</span>
           <i class="menu-arrow"></i>
         </a>
-        <div class="collapse" id="pasien">
+        <div class="collapse {{ (session('role')=="karyawan")? "show" : "" }}" id="pasien">
           <ul class="nav flex-column sub-menu">
             <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Data Pasien </a></li>
           </ul>
         </div>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" {{ (session('role')=="karyawan")? "style=display:block" : "style=display:none" }}>
         <a class="nav-link" data-bs-toggle="collapse" href="#transaksi" aria-expanded="false" aria-controls="transaksi">
           <i class="menu-icon mdi mdi-cash-multiple"></i>
           <span class="menu-title">Transaksi</span>
