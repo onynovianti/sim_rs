@@ -17,7 +17,7 @@
     <div class="navbar-menu-wrapper d-flex align-items-top"> 
       <ul class="navbar-nav">
         <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
-          <h1 class="welcome-text">Good Morning, <span class="text-black fw-bold">Narendra</span></h1>
+          <h1 class="welcome-text">Good Morning, <span class="text-black fw-bold">{{ session('namaLengkap') }}</span></h1>
         </li>
       </ul>
       <ul class="navbar-nav ms-auto">
@@ -126,7 +126,7 @@
             <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-message-text-outline text-primary me-2"></i> Messages</a>
             <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-calendar-check-outline text-primary me-2"></i> Activity</a>
             <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-help-circle-outline text-primary me-2"></i> FAQ</a>
-            <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</a>
+            <a href="{{ route('logout') }}" class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</a>
           </div>
         </li>
       </ul>
