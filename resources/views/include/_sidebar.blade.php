@@ -11,7 +11,7 @@
         <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" {{ (session('role')=="admin")? "aria-expanded=true" : "aria-expanded=false" }} aria-controls="ui-basic">
           <i class="menu-icon mdi mdi-account-multiple"></i>
           <span class="menu-title">Pengguna</span>
-          <i class="menu-arrow"></i> 
+          <i class="menu-arrow"></i>
         </a>
         <div class="collapse {{ (session('role')=="admin")? "show" : "" }}" id="ui-basic">
           <ul class="nav flex-column sub-menu">
@@ -40,7 +40,7 @@
           <ul class="nav flex-column sub-menu">
             <li class="nav-item"> <a class="nav-link" href="/penyakit"> Petunjuk Penggunaan </a></li>
             <li class="nav-item"> <a class="nav-link" href="/add_sakit"> Penyakit </a></li>
-            <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Rekam Medis </a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{url('diagnosa')}}">Rekam Medis</a></li>
           </ul>
         </div>
       </li>

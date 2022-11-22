@@ -35,7 +35,7 @@
           </div>
         </div>
       </div>
-    </div> 
+    </div>
     <div class="col-lg-7 d-flex flex-column">
       <div class="row flex-grow">
         <div class="col-12 grid-margin stretch-card">
@@ -62,7 +62,7 @@
           </div>
         </div>
       </div>
-    </div> 
+    </div>
 </div>
 <div class="row no-gutters" id="tambahgejala">
   <div class="col-lg-12 d-flex flex-column" style="max-height: 400px;
@@ -81,7 +81,7 @@
               <input type="search" id="search" class="form-control" placeholder="Search Here" title="Search here">
             </form>
           </div>
-          
+
           <div class="card-body">
             <div class="d-sm-flex justify-content-between align-items-start" style="margin-top: -4%">
               <div>
@@ -93,22 +93,22 @@
                         <form id="updatefeature" class="form-sample" method="POST" action="/get_medical_api/0">@csrf
                         <td>{{ $j['name'] }} <input type="hidden" value="{{ $j['name'] }}" name="nama"></td>
                         <td>
-                          @isset($j['min']) 
+                          @isset($j['min'])
                           <input class="form-control form-control-md" name="nilai" type="number" min="{{ $j['min'] }}" max="{{ $j['max'] }}"/>
                           @endisset
-                          @isset($j['choices']) 
+                          @isset($j['choices'])
                           <select class="form-control" id="exampleFormControlSelect2" name="nilai">
                             @foreach ($j['choices'] as $c)
                               <option value="{{ $c['value'] }}">{{ $c['text'] }}</option>
                             @endforeach
                           </select>
-                          @endisset 
+                          @endisset
                         </td>
                         <td><a onclick="document.getElementById('updatefeature').submit()" class="btn btn-primary btn-xs"><i class="mdi mdi-check"></i></a></td>
                         </form>
                       </tr>
                       {{-- @endforeach --}}
-                    
+
                     @endforeach
                   </table><hr>
                   Keterangan : <br><br>
@@ -120,6 +120,6 @@
         </div>
       </div>
     </div>
-  </div> 
+  </div>
 </div>
 @endsection
