@@ -18,3 +18,20 @@
 <script src="{{ asset('assets/js/jquery.cookie.js" type="text/javascript')}}"></script>
 <script src="{{ asset('assets/js/dashboard.js')}}"></script>
 <script src="{{ asset('assets/js/Chart.roundedBarCharts.js')}}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        
+        <script>
+        $(document).ready(function(){
+            $('#search').keyup(function(){
+
+            // Search text
+            var text = $(this).val();
+
+            // Hide all content class element
+            $('.content').hide();
+
+            // Search and show
+            $('.content:contains("'+text+'")').show();
+            });
+        });
+        </script>

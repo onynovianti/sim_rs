@@ -50,22 +50,22 @@
                         <div class="statistics-details d-flex align-items-center justify-content-between">
                           <div>
                             <p class="statistics-title">Administrator</p>
-                            <h3 class="rate-percentage">5</h3>
+                            <h3 class="rate-percentage">{{ $jml_admin }}</h3>
                             {{-- <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>Orang</span></p> --}}
                           </div>
                           <div>
                             <p class="statistics-title">Apoteker</p>
-                            <h3 class="rate-percentage">11</h3>
+                            <h3 class="rate-percentage">{{ $jml_apoteker }}</h3>
                             {{-- <p class="text-success d-flex"><i class="mdi mdi-menu-up"></i><span>+0.1%</span></p> --}}
                           </div>
                           <div>
                             <p class="statistics-title">Dokter</p>
-                            <h3 class="rate-percentage">23</h3>
+                            <h3 class="rate-percentage">{{ $jml_dokter }}</h3>
                             {{-- <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>68.8</span></p> --}}
                           </div>
                           <div class="d-none d-md-block">
                             <p class="statistics-title">Karyawan</p>
-                            <h3 class="rate-percentage">15</h3>
+                            <h3 class="rate-percentage">{{ $jml_karyawan }}</h3>
                             {{-- <p class="text-success d-flex"><i class="mdi mdi-menu-down"></i><span>+0.8%</span></p> --}}
                           </div>
                           <div class="d-none d-md-block">

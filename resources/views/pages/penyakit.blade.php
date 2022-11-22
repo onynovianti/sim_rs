@@ -28,7 +28,7 @@
     <div class="col-lg-4 d-flex flex-column">
       <div class="row flex-grow">
         <div class="col-md-6 col-lg-12 grid-margin">
-            <button class="btn btn-primary btn-block">Tambah Gejala</button>
+            <a href="/add_sakit" class="btn btn-primary btn-block">Mulai Diagnosa</a>
         </div>
       </div>
     </div>
