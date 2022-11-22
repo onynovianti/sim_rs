@@ -8,6 +8,7 @@ use App\Http\Controllers\ApotekerController;
 use App\Http\Controllers\DokterController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PenyakitController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,5 +32,6 @@ Route::resource('/karyawan', KaryawanController::class);
 Route::post('/auth',[AuthController::class,'store']);
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
-Route::get('get_medical_api/{id}',[ApiController::class,'callApi']);
+Route::get('/penyakit', [PenyakitController::class, 'index'])->name('penyakit');
+Route::get('/add_sakit', [PenyakitController::class, 'add']);
+Route::post('get_medical_api/{id}',[ApiController::class,'callApi']);

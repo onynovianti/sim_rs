@@ -24,7 +24,7 @@
       </li>
       <li class="nav-item nav-category" {{ (session('role')=="apoteker")? "style=display:block" : "style=display:none" }}>Apoteker</li>
       <li class="nav-item" {{ (session('role')=="apoteker")? "style=display:block" : "style=display:none" }}>
-        <a class="nav-link" href="http://bootstrapdash.com/demo/star-admin2-free/docs/documentation.html">
+        <a class="nav-link" href="/obat">
           <i class="menu-icon mdi mdi-pill"></i>
           <span class="menu-title">Obat</span>
         </a>
@@ -38,7 +38,8 @@
         </a>
         <div class="collapse {{ (session('role')=="dokter")? "show" : "" }} " id="auth">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Penyakit </a></li>
+            <li class="nav-item"> <a class="nav-link" href="/penyakit"> Petunjuk Penggunaan </a></li>
+            <li class="nav-item"> <a class="nav-link" href="/add_sakit"> Penyakit </a></li>
             <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Rekam Medis </a></li>
           </ul>
         </div>

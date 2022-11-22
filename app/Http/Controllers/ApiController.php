@@ -13,21 +13,23 @@ class ApiController extends Controller
 
     public function callApi($id, Request $request){
         $ses_id = Http::get('https://api.endlessmedical.com/v1/dx/InitSession');
-        $accept = Http::get('https://api.endlessmedical.com/v1/dx/AcceptTermsOfUse' , [
+        Http::asForm()->post('https://api.endlessmedical.com/v1/dx/AcceptTermsOfUse' , [
             'SessionID' => $ses_id['SessionID'],
             'passphrase' => 'I have read, understood and I accept and agree to comply with the Terms of Use of EndlessMedicalAPI and Endless Medical services. The Terms of Use are available on endlessmedical.com',
         ]);
 
-        $pilihan = 0;
-        switch($pilihan){
+        switch($id){
+            // UPDATE FEATURE
             case 0:
-                $update = Http::get('https://api.endlessmedical.com/v1/dx/UpdateFeature' , [
+                $update = Http::post('https://api.endlessmedical.com/v1/dx/UpdateFeature' , [
                     'SessionID' => $ses_id['SessionID'],
-                    'name' => 'BMI',
-                    'value' => '33',
+                    'name' => $request->nama,
+                    'value' => $request->nilai,
                 ]);
                 break;
+                // dd($ses_id);
             case 1:
+                // ANALYZE
                 $hasil = Http::get('https://api.endlessmedical.com/v1/dx/Analyze' , [
                     'SessionID' => $ses_id['SessionID'],
                     'NumberOfResults' => 10,
@@ -35,6 +37,6 @@ class ApiController extends Controller
                 ]);
                 break;
         }
-        // return view('pages.dashboard'); 
+        return redirect('/add_sakit')->with('ses', $ses_id['SessionID']);
     }
 }
