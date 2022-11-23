@@ -4,9 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Pasien;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PasienController extends Controller
 {
+
+    // public function __construct(){
+    //     return $this->middleware('karyawan') && $this->middleware('login');
+    // }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +19,9 @@ class PasienController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.pasien',[
+            'item' => DB::table('pasiens')->paginate(10),
+       ]); 
     }
 
     /**
@@ -24,7 +31,7 @@ class PasienController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.pasien_add');
     }
 
     /**
@@ -35,7 +42,17 @@ class PasienController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData=$request->validate([
+            'namaLengkap' => 'required',
+            'alamat' => 'required|min:5',
+            'noHp' => 'required',
+            'jenisKelamin' => 'required',
+            'tanggalLahir' => 'required',
+        ]);
+        Pasien::create($validatedData); //untuk menyimpan data
+        
+        // toast('Registration has been successful','success');
+        return redirect()->intended('/pasien');
     }
 
     /**
@@ -55,9 +72,12 @@ class PasienController extends Controller
      * @param  \App\Models\Pasien  $pasien
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pasien $pasien)
+    public function edit($id)
     {
-        //
+        return view("pages.pasien_edit",[
+            'title' => 'Karyawan - Edit data Pasien',
+            'item' => Pasien::find($id),
+        ]);
     }
 
     /**
@@ -67,9 +87,27 @@ class PasienController extends Controller
      * @param  \App\Models\Pasien  $pasien
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pasien $pasien)
+    public function update(Request $request, $id)
     {
-        //
+        $validatedData=$request->validate([
+            'namaLengkap' => 'required',
+            'alamat' => 'required|min:5',
+            'noHp' => 'required',
+            'jenisKelamin' => 'required',
+            'tanggalLahir' => 'required',
+        ]);
+
+        // Menyimpan update data karyawan
+    	$user = Pasien::find($id);
+    	$user->namaLengkap = $request->namaLengkap;
+        $user->alamat = $request->alamat;
+        $user->noHp = $request->noHp;
+        $user->jenisKelamin = $request->jenisKelamin;
+        $user->tanggalLahir = $request->tanggalLahir;
+    	$user->save();
+    	
+        // toast('Your data has been saved!','success');
+    	return redirect("/pasien"); // untuk diarahkan kemana
     }
 
     /**
@@ -78,8 +116,9 @@ class PasienController extends Controller
      * @param  \App\Models\Pasien  $pasien
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pasien $pasien)
+    public function destroy($id)
     {
-        //
+        Pasien::destroy($id);
+        return redirect("/pasien"); // untuk diarahkan kemana
     }
 }
