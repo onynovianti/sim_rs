@@ -53,7 +53,7 @@
         </a>
         <div class="collapse {{ (session('role')=="karyawan")? "show" : "" }}" id="pasien">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Data Pasien </a></li>
+            <li class="nav-item"> <a class="nav-link" href="/pasien"> Data Pasien </a></li>
           </ul>
         </div>
       </li>

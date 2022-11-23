@@ -9,6 +9,7 @@ use App\Http\Controllers\DokterController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PenyakitController;
+use App\Http\Controllers\PasienController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,7 @@ Route::resource('/admin', AdminController::class);
 Route::resource('/dokter', DokterController::class);
 Route::resource('/apoteker', ApotekerController::class);
 Route::resource('/karyawan', KaryawanController::class);
+Route::resource('/pasien', PasienController::class);
 Route::post('/auth',[AuthController::class,'store']);
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

@@ -4,13 +4,13 @@
 <div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title">Daftar Karyawan</h4>
+        <h4 class="card-title">Daftar Pasien</h4>
         <p class="card-description">
-          <a href="/karyawan/create" class="btn btn-primary float-end btn-sm" style="margin-right: 10px">+ Tambah</a><br>
+          <a href="/pasien/create" class="btn btn-primary float-end btn-sm" style="margin-right: 10px">+ Tambah</a><br>
         </p>
-        {{-- tampilan data karyawan  --}}
+        {{-- tampilan data pasien  --}}
         <div class="table-responsive">
-          {{-- table karyawan --}}
+          {{-- table pasien --}}
           <table class="table table-hover">
             <thead>
               <tr>
@@ -18,7 +18,7 @@
                   Nama Lengkap
                 </th>
                 <th>
-                  Username
+                    Jenis Kelamin
                 </th>
                 <th>
                   Kontak
@@ -29,24 +29,24 @@
               </tr>
             </thead>
             <tbody>
-              @foreach ($item as $k)
+              @foreach ($item as $p)
               <tr>
                 <td>
-                  {{ $k->namaLengkap }}
+                  {{ $p->namaLengkap }}
                 </td>
                 <td>
-                  {{ $k->username }}
-                </td>
+                    {{ $p->jenisKelamin }}
+                  </td>
                 <td>
                   <i class="menu-icon mdi mdi-phone"></i>
-                  {{ $k->noHp }} <hr>
+                  {{ $p->noHp }} <hr>
                   <i class="menu-icon mdi mdi-home-map-marker"></i>
-                  {{ $k->alamat }}
+                  {{ $p->alamat }}
                 </td>
                 <td>
-                  <form action="/karyawan/{{ $k->id }}" method="POST">
+                  <form action="/pasien/{{ $p->id }}" method="POST">
                     {{-- Update  --}}
-                    <a type="button" href="/karyawan/{{ $k->id }}/edit" class="btn btn-warning btn-rounded btn-icon btn-sm"><i class="mdi mdi-lead-pencil"></i></a>
+                    <a type="button" href="/pasien/{{ $p->id }}/edit" class="btn btn-warning btn-rounded btn-icon btn-sm"><i class="mdi mdi-lead-pencil"></i></a>
                     @method("delete")
                     @csrf
                     {{-- Delete  --}}
