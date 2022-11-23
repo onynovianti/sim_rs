@@ -17,7 +17,7 @@ class AdminController extends Controller
     public function index(){
        return view('pages.admin',[
             'item' => DB::table('admins')->paginate(10),
-       ]); 
+       ]);  
     }
 
     // Tampilan Create Admin
