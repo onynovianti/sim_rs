@@ -70,7 +70,7 @@
                           </div>
                           <div class="d-none d-md-block">
                             <p class="statistics-title">Pasien Terdaftar</p>
-                            <h3 class="rate-percentage">210</h3>
+                            <h3 class="rate-percentage">{{ $jml_pasien }}</h3>
                             {{-- <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>68.8</span></p> --}}
                           </div>
                           <div class="d-none d-md-block">
