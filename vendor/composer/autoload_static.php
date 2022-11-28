@@ -137,6 +137,7 @@ class ComposerStaticInitb97dcc99d535d9e11cab84cfee0ba2ed
         'F' => 
         array (
             'Fruitcake\\Cors\\' => 15,
+            'Flynsarmy\\CsvSeeder\\' => 20,
             'Faker\\' => 6,
         ),
         'E' => 
@@ -433,6 +434,10 @@ class ComposerStaticInitb97dcc99d535d9e11cab84cfee0ba2ed
         array (
             0 => __DIR__ . '/..' . '/fruitcake/php-cors/src',
         ),
+        'Flynsarmy\\CsvSeeder\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/flynsarmy/csv-seeder/src',
+        ),
         'Faker\\' => 
         array (
             0 => __DIR__ . '/..' . '/fakerphp/faker/src/Faker',
@@ -515,8 +520,14 @@ class ComposerStaticInitb97dcc99d535d9e11cab84cfee0ba2ed
         'App\\Http\\Controllers\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/DashboardController.php',
         'App\\Http\\Controllers\\DokterController' => __DIR__ . '/../..' . '/app/Http/Controllers/DokterController.php',
         'App\\Http\\Controllers\\KaryawanController' => __DIR__ . '/../..' . '/app/Http/Controllers/KaryawanController.php',
+<<<<<<< HEAD
+=======
+        'App\\Http\\Controllers\\ObatController' => __DIR__ . '/../..' . '/app/Http/Controllers/ObatController.php',
+        'App\\Http\\Controllers\\PasienController' => __DIR__ . '/../..' . '/app/Http/Controllers/PasienController.php',
+>>>>>>> 31f739096151e0b7154d1f9694b921677ce37769
         'App\\Http\\Controllers\\PenyakitController' => __DIR__ . '/../..' . '/app/Http/Controllers/PenyakitController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
+        'App\\Http\\Middleware\\Apoteker' => __DIR__ . '/../..' . '/app/Http/Middleware/Apoteker.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\Dokter' => __DIR__ . '/../..' . '/app/Http/Middleware/Dokter.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
@@ -528,6 +539,7 @@ class ComposerStaticInitb97dcc99d535d9e11cab84cfee0ba2ed
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\ValidateSignature' => __DIR__ . '/../..' . '/app/Http/Middleware/ValidateSignature.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+<<<<<<< HEAD
         'App\\Http\\Middleware\\admin' => __DIR__ . '/../..' . '/app/Http/Middleware/admin.php',
         'App\\Models\\Admin' => __DIR__ . '/../..' . '/app/Models/Admin.php',
         'App\\Models\\Apoteker' => __DIR__ . '/../..' . '/app/Models/Apoteker.php',
@@ -536,6 +548,14 @@ class ComposerStaticInitb97dcc99d535d9e11cab84cfee0ba2ed
         'App\\Models\\Karyawan' => __DIR__ . '/../..' . '/app/Models/Karyawan.php',
         'App\\Models\\Obat' => __DIR__ . '/../..' . '/app/Models/Obat.php',
         'App\\Models\\Penyakit' => __DIR__ . '/../..' . '/app/Models/Penyakit.php',
+=======
+        'App\\Models\\Admin' => __DIR__ . '/../..' . '/app/Models/Admin.php',
+        'App\\Models\\Apoteker' => __DIR__ . '/../..' . '/app/Models/Apoteker.php',
+        'App\\Models\\Dokter' => __DIR__ . '/../..' . '/app/Models/Dokter.php',
+        'App\\Models\\Karyawan' => __DIR__ . '/../..' . '/app/Models/Karyawan.php',
+        'App\\Models\\Obat' => __DIR__ . '/../..' . '/app/Models/Obat.php',
+        'App\\Models\\Pasien' => __DIR__ . '/../..' . '/app/Models/Pasien.php',
+>>>>>>> 31f739096151e0b7154d1f9694b921677ce37769
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
@@ -632,6 +652,7 @@ class ComposerStaticInitb97dcc99d535d9e11cab84cfee0ba2ed
         'Carbon\\Traits\\Serialization' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Traits/Serialization.php',
         'Carbon\\Traits\\Test' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Traits/Test.php',
         'Carbon\\Traits\\Timestamp' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Traits/Timestamp.php',
+        'Carbon\\Traits\\ToStringFormat' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Traits/ToStringFormat.php',
         'Carbon\\Traits\\Units' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Traits/Units.php',
         'Carbon\\Traits\\Week' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Traits/Week.php',
         'Carbon\\Translator' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Translator.php',
@@ -651,9 +672,13 @@ class ComposerStaticInitb97dcc99d535d9e11cab84cfee0ba2ed
         'Database\\Factories\\UserFactory' => __DIR__ . '/../..' . '/database/factories/UserFactory.php',
         'Database\\Seeders\\AuthSeeder' => __DIR__ . '/../..' . '/database/seeders/AuthSeeder.php',
         'Database\\Seeders\\DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/DatabaseSeeder.php',
+<<<<<<< HEAD
         'Database\\Seeders\\DiagnosaSeeder' => __DIR__ . '/../..' . '/database/seeders/DiagnosaSeeder.php',
         'Database\\Seeders\\PenyakitSeeder' => __DIR__ . '/../..' . '/database/seeders/PenyakitSeeder.php',
         'Database\\Seeders\\penyakits' => __DIR__ . '/../..' . '/database/seeders/penyakits.php',
+=======
+        'Database\\Seeders\\ObatSeeder' => __DIR__ . '/../..' . '/database/seeders/ObatSeeder.php',
+>>>>>>> 31f739096151e0b7154d1f9694b921677ce37769
         'DeepCopy\\DeepCopy' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
         'DeepCopy\\Exception\\CloneException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/CloneException.php',
         'DeepCopy\\Exception\\PropertyException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/PropertyException.php',
@@ -1364,6 +1389,8 @@ class ComposerStaticInitb97dcc99d535d9e11cab84cfee0ba2ed
         'Faker\\Provider\\zh_TW\\Text' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/zh_TW/Text.php',
         'Faker\\UniqueGenerator' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/UniqueGenerator.php',
         'Faker\\ValidGenerator' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/ValidGenerator.php',
+        'Flynsarmy\\CsvSeeder\\CsvSeeder' => __DIR__ . '/..' . '/flynsarmy/csv-seeder/src/CsvSeeder.php',
+        'Flynsarmy\\CsvSeeder\\CsvSeederServiceProvider' => __DIR__ . '/..' . '/flynsarmy/csv-seeder/src/CsvSeederServiceProvider.php',
         'Fruitcake\\Cors\\CorsService' => __DIR__ . '/..' . '/fruitcake/php-cors/src/CorsService.php',
         'Fruitcake\\Cors\\Exceptions\\InvalidOptionException' => __DIR__ . '/..' . '/fruitcake/php-cors/src/Exceptions/InvalidOptionException.php',
         'GrahamCampbell\\ResultType\\Error' => __DIR__ . '/..' . '/graham-campbell/result-type/src/Error.php',
@@ -2518,6 +2545,7 @@ class ComposerStaticInitb97dcc99d535d9e11cab84cfee0ba2ed
         'Illuminate\\Support\\ItemNotFoundException' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Collections/ItemNotFoundException.php',
         'Illuminate\\Support\\Js' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/Js.php',
         'Illuminate\\Support\\LazyCollection' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Collections/LazyCollection.php',
+        'Illuminate\\Support\\Lottery' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/Lottery.php',
         'Illuminate\\Support\\Manager' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/Manager.php',
         'Illuminate\\Support\\MessageBag' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/MessageBag.php',
         'Illuminate\\Support\\MultipleInstanceManager' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/MultipleInstanceManager.php',
@@ -2627,6 +2655,7 @@ class ComposerStaticInitb97dcc99d535d9e11cab84cfee0ba2ed
         'Illuminate\\View\\Compilers\\Concerns\\CompilesConditionals' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/Compilers/Concerns/CompilesConditionals.php',
         'Illuminate\\View\\Compilers\\Concerns\\CompilesEchos' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/Compilers/Concerns/CompilesEchos.php',
         'Illuminate\\View\\Compilers\\Concerns\\CompilesErrors' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/Compilers/Concerns/CompilesErrors.php',
+        'Illuminate\\View\\Compilers\\Concerns\\CompilesFragments' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/Compilers/Concerns/CompilesFragments.php',
         'Illuminate\\View\\Compilers\\Concerns\\CompilesHelpers' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/Compilers/Concerns/CompilesHelpers.php',
         'Illuminate\\View\\Compilers\\Concerns\\CompilesIncludes' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/Compilers/Concerns/CompilesIncludes.php',
         'Illuminate\\View\\Compilers\\Concerns\\CompilesInjections' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/Compilers/Concerns/CompilesInjections.php',
@@ -2642,6 +2671,7 @@ class ComposerStaticInitb97dcc99d535d9e11cab84cfee0ba2ed
         'Illuminate\\View\\ComponentSlot' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ComponentSlot.php',
         'Illuminate\\View\\Concerns\\ManagesComponents' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/Concerns/ManagesComponents.php',
         'Illuminate\\View\\Concerns\\ManagesEvents' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/Concerns/ManagesEvents.php',
+        'Illuminate\\View\\Concerns\\ManagesFragments' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/Concerns/ManagesFragments.php',
         'Illuminate\\View\\Concerns\\ManagesLayouts' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/Concerns/ManagesLayouts.php',
         'Illuminate\\View\\Concerns\\ManagesLoops' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/Concerns/ManagesLoops.php',
         'Illuminate\\View\\Concerns\\ManagesStacks' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/Concerns/ManagesStacks.php',
@@ -4114,7 +4144,6 @@ class ComposerStaticInitb97dcc99d535d9e11cab84cfee0ba2ed
         'Psy\\Command\\WtfCommand' => __DIR__ . '/..' . '/psy/psysh/src/Command/WtfCommand.php',
         'Psy\\ConfigPaths' => __DIR__ . '/..' . '/psy/psysh/src/ConfigPaths.php',
         'Psy\\Configuration' => __DIR__ . '/..' . '/psy/psysh/src/Configuration.php',
-        'Psy\\ConsoleColorFactory' => __DIR__ . '/..' . '/psy/psysh/src/ConsoleColorFactory.php',
         'Psy\\Context' => __DIR__ . '/..' . '/psy/psysh/src/Context.php',
         'Psy\\ContextAware' => __DIR__ . '/..' . '/psy/psysh/src/ContextAware.php',
         'Psy\\EnvInterface' => __DIR__ . '/..' . '/psy/psysh/src/EnvInterface.php',
@@ -4148,6 +4177,7 @@ class ComposerStaticInitb97dcc99d535d9e11cab84cfee0ba2ed
         'Psy\\Output\\PassthruPager' => __DIR__ . '/..' . '/psy/psysh/src/Output/PassthruPager.php',
         'Psy\\Output\\ProcOutputPager' => __DIR__ . '/..' . '/psy/psysh/src/Output/ProcOutputPager.php',
         'Psy\\Output\\ShellOutput' => __DIR__ . '/..' . '/psy/psysh/src/Output/ShellOutput.php',
+        'Psy\\Output\\Theme' => __DIR__ . '/..' . '/psy/psysh/src/Output/Theme.php',
         'Psy\\ParserFactory' => __DIR__ . '/..' . '/psy/psysh/src/ParserFactory.php',
         'Psy\\Readline\\GNUReadline' => __DIR__ . '/..' . '/psy/psysh/src/Readline/GNUReadline.php',
         'Psy\\Readline\\HoaConsole' => __DIR__ . '/..' . '/psy/psysh/src/Readline/HoaConsole.php',
@@ -4248,9 +4278,15 @@ class ComposerStaticInitb97dcc99d535d9e11cab84cfee0ba2ed
         'Psy\\VarDumper\\Presenter' => __DIR__ . '/..' . '/psy/psysh/src/VarDumper/Presenter.php',
         'Psy\\VarDumper\\PresenterAware' => __DIR__ . '/..' . '/psy/psysh/src/VarDumper/PresenterAware.php',
         'Psy\\VersionUpdater\\Checker' => __DIR__ . '/..' . '/psy/psysh/src/VersionUpdater/Checker.php',
+        'Psy\\VersionUpdater\\Downloader' => __DIR__ . '/..' . '/psy/psysh/src/VersionUpdater/Downloader.php',
+        'Psy\\VersionUpdater\\Downloader\\CurlDownloader' => __DIR__ . '/..' . '/psy/psysh/src/VersionUpdater/Downloader/CurlDownloader.php',
+        'Psy\\VersionUpdater\\Downloader\\Factory' => __DIR__ . '/..' . '/psy/psysh/src/VersionUpdater/Downloader/Factory.php',
+        'Psy\\VersionUpdater\\Downloader\\FileDownloader' => __DIR__ . '/..' . '/psy/psysh/src/VersionUpdater/Downloader/FileDownloader.php',
         'Psy\\VersionUpdater\\GitHubChecker' => __DIR__ . '/..' . '/psy/psysh/src/VersionUpdater/GitHubChecker.php',
+        'Psy\\VersionUpdater\\Installer' => __DIR__ . '/..' . '/psy/psysh/src/VersionUpdater/Installer.php',
         'Psy\\VersionUpdater\\IntervalChecker' => __DIR__ . '/..' . '/psy/psysh/src/VersionUpdater/IntervalChecker.php',
         'Psy\\VersionUpdater\\NoopChecker' => __DIR__ . '/..' . '/psy/psysh/src/VersionUpdater/NoopChecker.php',
+        'Psy\\VersionUpdater\\SelfUpdate' => __DIR__ . '/..' . '/psy/psysh/src/VersionUpdater/SelfUpdate.php',
         'Ramsey\\Collection\\AbstractArray' => __DIR__ . '/..' . '/ramsey/collection/src/AbstractArray.php',
         'Ramsey\\Collection\\AbstractCollection' => __DIR__ . '/..' . '/ramsey/collection/src/AbstractCollection.php',
         'Ramsey\\Collection\\AbstractSet' => __DIR__ . '/..' . '/ramsey/collection/src/AbstractSet.php',
@@ -4376,6 +4412,7 @@ class ComposerStaticInitb97dcc99d535d9e11cab84cfee0ba2ed
         'Ramsey\\Uuid\\Rfc4122\\UuidV5' => __DIR__ . '/..' . '/ramsey/uuid/src/Rfc4122/UuidV5.php',
         'Ramsey\\Uuid\\Rfc4122\\UuidV6' => __DIR__ . '/..' . '/ramsey/uuid/src/Rfc4122/UuidV6.php',
         'Ramsey\\Uuid\\Rfc4122\\UuidV7' => __DIR__ . '/..' . '/ramsey/uuid/src/Rfc4122/UuidV7.php',
+        'Ramsey\\Uuid\\Rfc4122\\UuidV8' => __DIR__ . '/..' . '/ramsey/uuid/src/Rfc4122/UuidV8.php',
         'Ramsey\\Uuid\\Rfc4122\\Validator' => __DIR__ . '/..' . '/ramsey/uuid/src/Rfc4122/Validator.php',
         'Ramsey\\Uuid\\Rfc4122\\VariantTrait' => __DIR__ . '/..' . '/ramsey/uuid/src/Rfc4122/VariantTrait.php',
         'Ramsey\\Uuid\\Rfc4122\\VersionTrait' => __DIR__ . '/..' . '/ramsey/uuid/src/Rfc4122/VersionTrait.php',

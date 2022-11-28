@@ -10,6 +10,7 @@
         </p>
         {{-- tampilan data karyawan  --}}
         <div class="table-responsive">
+          {{-- table karyawan --}}
           <table class="table table-hover">
             <thead>
               <tr>

@@ -18,6 +18,7 @@ class DashboardController extends Controller
              'jml_apoteker' => DB::table('apotekers')->count(),
              'jml_dokter' => DB::table('dokters')->count(),
              'jml_karyawan' => DB::table('karyawans')->count(),
+             'jml_pasien' => DB::table('pasiens')->count(),
         ]);
      }
 }
