@@ -8,7 +8,7 @@
         <p class="card-description">
           <a href="/pasien/create" class="btn btn-primary float-end btn-sm" style="margin-right: 10px">+ Tambah</a><br>
         </p>
-        {{-- tampilan data pasien  --}}
+        {{-- tampilan data pasien pada rute karyawan  --}}
         <div class="table-responsive">
           {{-- table pasien --}}
           <table class="table table-hover">
