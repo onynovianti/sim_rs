@@ -46,6 +46,7 @@ class AuthController extends Controller
                     'id' => $user->id,
                     'username' => $user->username,
                     'namaLengkap' => $user->namaLengkap,
+                    'jenisKelamin' => $user->jenisKelamin
                     ]);
                 // return redirect('/'.$request->role);
                 return redirect('/dashboard');

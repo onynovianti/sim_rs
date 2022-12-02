@@ -16,8 +16,9 @@
 <!-- endinject -->
 <!-- Custom js for this page-->
 <script src="{{ asset('assets/js/jquery.cookie.js" type="text/javascript')}}"></script>
-<script src="{{ asset('assets/js/dashboard.js')}}"></script>
-<script src="{{ asset('assets/js/Chart.roundedBarCharts.js')}}"></script>
+{{-- <script src="{{ asset('assets/js/dashboard.js')}}"></script> --}}
+{{-- <script src="{{ asset('assets/js/Chart.roundedBarCharts.js')}}"></script> --}}
+<script src="{{ asset('assets/js/chart_dashboard.js')}}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         
         <script>

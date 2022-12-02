@@ -14568,6 +14568,14 @@ fieldset:disabled .swal2-modal .swal2-buttonswrapper .swal2-styled,
   }
 }
 
+@media print
+{    
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
+}
+
 .modal-fullscreen {
   width: 100vw;
   max-width: none;
