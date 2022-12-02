@@ -1,5 +1,6 @@
 # Release Notes for 9.x
 
+<<<<<<< Updated upstream
 ## [Unreleased](https://github.com/laravel/framework/compare/v9.40.1...9.x)
 
 
@@ -32,6 +33,9 @@
 - Update database version check for lock popping for PlanetScale ([#44925](https://github.com/laravel/framework/pull/44925))
 - Move function withoutTrashed into DatabaseRule ([#44938](https://github.com/laravel/framework/pull/44938))
 - Use write connection on Schema::getColumnListing() and Schema::hasTable() for MySQL and PostgreSQL ([#44946](https://github.com/laravel/framework/pull/44946))
+=======
+## [Unreleased](https://github.com/laravel/framework/compare/v9.39.0...9.x)
+>>>>>>> Stashed changes
 
 
 ## [v9.39.0](https://github.com/laravel/framework/compare/v9.38.0...v9.39.0) - 2022-11-08

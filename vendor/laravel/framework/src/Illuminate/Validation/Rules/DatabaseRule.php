@@ -183,6 +183,7 @@ trait DatabaseRule
     }
 
     /**
+<<<<<<< Updated upstream
      * Only include soft deleted models during the existence check.
      *
      * @param  string  $deletedAtColumn
@@ -196,6 +197,8 @@ trait DatabaseRule
     }
 
     /**
+=======
+>>>>>>> Stashed changes
      * Register a custom query callback.
      *
      * @param  \Closure  $callback
