@@ -13,30 +13,18 @@
                  <ul><br><br><hr>
                     <ol>Gejala yang ditambahkan</ol><br><br>
                     <table class="table">
-                        <?php
-                            if ($fiturGejala == "Kosong") {
-                                echo "Kosong";
-                            } else { ?>
-                                @foreach ($fiturGejala as $j)
-                                <tr class="content">
-                                    <form id="deleteFeature" class="form-sample" method="POST" action="featureDelete">@csrf
-                                        <td>{{ $j['name'] }} <input type="hidden" value="{{ $j['name'] }}" name="nama"></td>
-                                        <td>{{ $j['value'] }} <input type="hidden" value="{{ $j['value'] }}" name="nilai"></td>
-                                        <td><a onclick="document.getElementById('deleteFeature').submit()" class="btn btn-danger btn-xs" href="">x</a></td>
-                                    </form>
-                                </tr>
-                                @endforeach
-                            <?php }
-                            ?>
-                        {{-- @foreach ($fiturGejala as $j)
-                        <tr class="content">
-                            <form id="deleteFeature" class="form-sample" method="POST" action="featureDelete">@csrf
-                                <td>{{ $j['name'] }} <input type="hidden" value="{{ $j['name'] }}" name="nama"></td>
-                                <td>{{ $j['value'] }} <input type="hidden" value="{{ $j['value'] }}" name="nilai"></td>
-                                <td><a onclick="document.getElementById('deleteFeature').submit()" class="btn btn-danger btn-xs" href="">x</a></td>
-                            </form>
+                        <tr>
+                            <td>1</td>
+                            <td>Age</td>
+                            <td>30 Tahun </td>
+                            <td><a class="btn btn-danger btn-xs" href="">x</a></td>
                         </tr>
-                        @endforeach --}}
+                        <tr>
+                            <td>1</td>
+                            <td>Age</td>
+                            <td>30 Tahun </td>
+                            <td><a class="btn btn-danger btn-xs" href="">x</a></td>
+                        </tr>
                     </table><hr>
                     Keterangan : <br><br>
                     <b>Anda dapat memasukkan >1 gejala sesuai dengan kondisi pasien</b>
@@ -99,10 +87,10 @@
               <div>
                <ul>
                   <table class="table">
-                    @foreach ($feature as $j)
+                    @foreach ($json as $j)
                       {{-- @foreach ($j['name'] as $i) --}}
                       <tr class="content">
-                        <form class="form-sample" method="POST" action="/featureUpdate/{{ $patient->id }}">@csrf
+                        <form id="updatefeature" class="form-sample" method="POST" action="featureUpdate">@csrf
                         <td>{{ $j['name'] }} <input type="hidden" value="{{ $j['name'] }}" name="nama"></td>
                         <td>
                           @isset($j['min'])
@@ -116,8 +104,7 @@
                           </select>
                           @endisset
                         </td>
-                        <td><button type="submit" class="btn btn-primary btn-xs"><i class="mdi mdi-check"></i></button></td> @method("POST")
-                        {{-- <td><a onclick="document.getElementById('updatefeature').submit()" class="btn btn-primary btn-xs"><i class="mdi mdi-check"></i></a></td> --}}
+                        <td><a onclick="document.getElementById('updatefeature').submit()" class="btn btn-primary btn-xs"><i class="mdi mdi-check"></i></a></td>
                         </form>
                       </tr>
                       {{-- @endforeach --}}

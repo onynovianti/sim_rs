@@ -39,8 +39,9 @@
         <div class="collapse {{ (session('role')=="dokter")? "show" : "" }} " id="auth">
           <ul class="nav flex-column sub-menu">
             <li class="nav-item"> <a class="nav-link" href="/penyakit"> Petunjuk Penggunaan </a></li>
+            <li class="nav-item"> <a class="nav-link" href="/diagnosa/select">Pasien</a></li>
             <li class="nav-item"> <a class="nav-link" href="/add_sakit"> Penyakit </a></li>
-            <li class="nav-item"> <a class="nav-link" href="{{url('diagnosa')}}">Rekam Medis</a></li>
+            <li class="nav-item"> <a class="nav-link" href="/diagnosa">Rekam Medis</a></li>
           </ul>
         </div>
       </li>

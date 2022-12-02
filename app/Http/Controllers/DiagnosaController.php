@@ -2,89 +2,146 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Diagnosa;
+use App\Models\Pasien;
 use Alert;
 
 class DiagnosaController extends Controller
 {
-    public function __construct(){
+    public function __construct()
+    {
         return $this->middleware('dokter') && $this->middleware('login');
     }
 
+    public function show()
+    {
+        return view('pages.diagnosa', [
+            'asas' => DB::table('diagnosas')
+                ->paginate(10),
+        ]);
+    }
+
+
     // DASHBOARD
-    public function index(){
-       return view('pages.diagnosa', [
-            'asas' => DB::table('diagnosa')->paginate(10),
-       ]);
+    public function index()
+    {
+        return view('pages.diagnosa', [
+            'asas' => DB::table('diagnosas')->paginate(10),
+        ]);
     }
 
     // Tampilan Create Diagnosa
-    public function create(){
-        return view('pages.diagnosa_add');
+    public function create()
+    {
+        return view('pages.diagnosa_select', [
+            'item' => DB::table('pasiens')->paginate(10),
+        ]);
     }
 
     // Create Diagnosa
-    public function store(Request $request){
-        $validatedData=$request->validate([
-            'namaLengkap' => 'required',
-            'username' => 'required|min:5',
-            'password' => 'required|min:5',
-            'alamat' => 'required|min:5',
-            'noHp' => 'required',
-            'jenisKelamin' => 'required',
-            'tempatLahir' => 'required',
-            'tanggalLahir' => 'required',
+    public function store($id, Request $request)
+    {
+        $patient = Pasien::find($id);
+        $validatedData = $request->validate([
+            'namaLengkap' => $patient->namaLengkap,
         ]);
-        $validatedData['password']=bcrypt($validatedData['password']);
-        Apoteker::create($validatedData); //untuk menyimpan data
+        Diagnosa::create($validatedData); //untuk menyimpan data
 
         // toast('Registration has been successful','success');
-        return redirect()->intended('/apoteker');
+        return redirect()->intended('/diagnosa');
+    }
+
+    public function save(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'namaLengkap' => 'required',
+        ]);
+        Diagnosa::create($validatedData); //untuk menyimpan data
+
+        // toast('Registration has been successful','success');
+        return redirect()->intended('/diagnosa');
     }
 
     // Tampilan Edit
-    public function edit($id){
-        return view("pages.apoteker_edit",[
-            'title' => 'User - Edit Apoteker',
-            'item' => Apoteker::find($id),
+    public function edit($id)
+    {
+        return view("pages.diagnosa_edit", [
+            'title' => 'User - Edit Diagnosa',
+            'item' => Diagnosa::find($id),
         ]);
     }
 
     // Simpan Hasil Edit
-    public function update(Request $request, $id){
-        $validatedData=$request->validate([
-            'namaLengkap' => 'required',
-            'username' => 'required|min:5',
-            'alamat' => 'required|min:5',
-            'noHp' => 'required',
-            'jenisKelamin' => 'required',
-            'tempatLahir' => 'required',
-            'tanggalLahir' => 'required',
-        ]);
+    public function update(Request $request, $id)
+    {
+        $ses_id = Http::get('https://api.endlessmedical.com/v1/dx/InitSession');
 
         // Menyimpan update
-    	$user = Apoteker::find($id);
-    	$user->namaLengkap = $request->namaLengkap;
-        $user->username = $request->username;
-        $user->alamat = $request->alamat;
-        $user->noHp = $request->noHp;
-        $user->jenisKelamin = $request->jenisKelamin;
-        $user->tempatLahir = $request->tempatLahir;
-        $user->tanggalLahir = $request->tanggalLahir;
-    	$user->save();
+        $user = Diagnosa::find($id);
+        $user->sessionID = $ses_id['SessionID'];
+        $user->save();
 
         // toast('Your data has been saved!','success');
-    	return redirect("/apoteker"); // untuk diarahkan kemana
+        return redirect("/diagnosa"); // untuk diarahkan kemana
     }
 
     // Hapus Data User
-    public function destroy(Request $request, $id){
-    	Apoteker::destroy($id);
-    	// Session::flash('hapussuccess', 'Data berhasil dihapus!');
+    public function destroy(Request $request, $id)
+    {
+        Diagnosa::destroy($id);
+        // Session::flash('hapussuccess', 'Data berhasil dihapus!');
         // toast('Your data has been deleted!','success');
-    	return redirect("/apoteker"); // untuk diarahkan kemana
+        return redirect("/diagnosa"); // untuk diarahkan kemana
+    }
+
+    public function add(Request $request, $id)
+    {
+        $fiturGejala = "0";
+        $diagnosisPenyakit = "0";
+        $patient = Diagnosa::find($id);
+        $path = storage_path() . "/json/SymptomsOutput.json"; // ie: /var/www/laravel/app/storage/json/filename.json
+        $feature = json_decode(file_get_contents($path), true);
+        if ($patient->fiturGejala == '0') {
+            $fiturGejala =  "Kosong";
+        } else {
+            $fiturGejala = json_decode($patient->fiturGejala);
+        };
+
+        if ($patient->diagnosisPenyakit == '0') {
+            $diagnosisPenyakit = "Kosong";
+        } else {
+            $diagnosisPenyakit = json_decode($patient->diagnosisPenyakit);
+        };
+
+        return view('pages.penyakit_add', [
+            'patient' => $patient,
+            'feature' => $feature,
+            'fiturGejala' => $fiturGejala,
+            'diagnosisPenyakit' => $diagnosisPenyakit,
+        ]);
+    }
+
+    public function featureUpdate(Request $request, $id)
+    {
+        $patient = Diagnosa::find($id);
+        Http::post('https://api.endlessmedical.com/v1/dx/UpdateFeature', [
+            'SessionID' => $patient->sessionID,
+            'name' => $request->nama,
+            'value' => $request->nilai
+        ]);
+
+        $data = json_encode([
+            'name' => $request->nama,
+            'value' => $request->nilai
+        ]);
+
+        $patient->fiturGejala = $data;
+        $patient->save();
+        $url = '/diagnosis/session/';
+        $returnUrl = $url .= $id;
+        return view($returnUrl);
     }
 }
-

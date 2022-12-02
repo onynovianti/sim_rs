@@ -13,10 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('diagnosis', function (Blueprint $table) {
+        Schema::create('diagnosas', function (Blueprint $table) {
             $table->id();
+            $table->string('sessionID');
             $table->string('namaLengkap');
-            $table->json('json');
+            $table->json('fiturGejala');
+            $table->json('diagnosisPenyakit');
             $table->timestamps();
         });
     }

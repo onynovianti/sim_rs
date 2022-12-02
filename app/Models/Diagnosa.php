@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Diagnosa extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'sessionID',
+        'namaLengkap',
+        'fiturGejala',
+        'diagnosisPenyakit'
+    ];
 }

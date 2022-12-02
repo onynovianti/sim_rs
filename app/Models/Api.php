@@ -8,10 +8,4 @@ use Illuminate\Database\Eloquent\Model;
 class Api extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'sessionID',
-        'namaLengkap',
-        'fiturGejala',
-        'diagnosisPenyakit'
-    ];
 }

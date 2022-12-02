@@ -36,13 +36,12 @@
                 <td>
                   <form action="/diagnosa/{{ $i->id }}" method="POST">
                     {{-- Update  --}}
-                    <a type="button" href="/diagnosa/{{ $i->id }}/edit" class="btn btn-warning btn-rounded btn-icon btn-sm"><i class="mdi mdi-lead-pencil"></i></a>
-                    @method("delete")
+                    <a type="button" href="/diagnosa/update/{{ $i->id }}" class="btn btn-warning btn-rounded btn-icon btn-sm"><i class="mdi mdi-refresh"></i></a>
+                    @method("POST")
                     @csrf
                     {{-- Delete  --}}
-                    <button type="submit" class="btn btn-danger btn-rounded btn-icon btn-sm">
-                      <i class="mdi mdi-delete-forever"></i>
-                    </button>
+                    <a type="button" href="/diagnosa/session/{{ $i->id }}" class="btn btn-warning btn-rounded btn-icon btn-sm"><i class="mdi mdi-lead-pencil"></i></a>
+                    @csrf
                     </form>
                 </td>
               </tr>
