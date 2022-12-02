@@ -35,7 +35,13 @@
                   {{ $p->namaLengkap }}
                 </td>
                 <td>
-                    {{ $p->jenisKelamin }}
+                    <?php
+                    if ($p->jenisKelamin == 0) {
+                        echo "Laki-laki";
+                    } else {
+                        echo "Perempuan";
+                    }
+                    ?>
                   </td>
                 <td>
                   <i class="menu-icon mdi mdi-phone"></i>
@@ -53,7 +59,7 @@
                     <button type="submit" class="btn btn-danger btn-rounded btn-icon btn-sm">
                       <i class="mdi mdi-delete-forever"></i>
                     </button>
-                  </form> 
+                  </form>
                 </td>
               </tr>
               @endforeach
