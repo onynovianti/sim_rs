@@ -10,6 +10,7 @@ use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PenyakitController;
 use App\Http\Controllers\PasienController;
+use App\Http\Controllers\TransaksiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,9 +32,12 @@ Route::resource('/dokter', DokterController::class);
 Route::resource('/apoteker', ApotekerController::class);
 Route::resource('/karyawan', KaryawanController::class);
 Route::resource('/pasien', PasienController::class);
+Route::resource('/transaksi', TransaksiController::class);
+// Route::get('/varify', TransaksiController::class);
+// Route::get('/block', TransaksiController::class);
 Route::post('/auth',[AuthController::class,'store']);
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('/penyakit', [PenyakitController::class, 'index'])->name('penyakit');
 Route::get('/add_sakit', [PenyakitController::class, 'add']);
-Route::post('get_medical_api/{id}',[ApiController::class,'callApi']);
+Route::post('get_medical_api/{id}',[ApiController::class,'callApi']); 

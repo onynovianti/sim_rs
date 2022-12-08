@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Transaksi;
 
 class Pasien extends Model
 {
@@ -15,4 +16,9 @@ class Pasien extends Model
         'jenisKelamin',
         'tanggalLahir'
     ];
+
+    public function transaksi()
+    {
+        return $this->hasMany(Transaksi::class);
+    }
 }
