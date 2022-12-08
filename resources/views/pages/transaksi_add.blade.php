@@ -46,11 +46,12 @@
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Harga Obat</label>
               <div class="col-sm-9">
-                <select name="harga_obat" id="obat" class="form-select"></select>
+                <select name="obat_id" id="obat" class="form-select">
                   <option value="">-</option>
                   @foreach($obat as $d)
                     <option value="{{$d->id}}">{{$d->nama}}</option>
                   @endforeach
+                </select>
               </div>
             </div>
           </div>

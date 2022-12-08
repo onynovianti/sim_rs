@@ -14,7 +14,9 @@ class TransaksiController extends Controller
 {
     public function index(){
         return view('pages.transaksi',[
-            'item' => DB::table('transaksis')->paginate(10),
+            'item' => Transaksi::with(['dokter','obat'])->paginate(10),
+            // dd(Dokter::find(1)->transaksi)
+            // dd(Transaksi::with('dokter')->get())
         ]); 
      }
  
@@ -35,26 +37,21 @@ class TransaksiController extends Controller
         $validatedData = $request->validate([
             'dokter_id' => 'required',
             'pasien_id' => 'required',
-            'harga_obat' => 'required',
-            'status' => 'required'
+            'obat_id' => 'required',
         ]);
         $validatedData['status'] = 0;
-
+        // dd($validatedData);
         Transaksi::create($validatedData);
 
         return redirect('/transaksi')->with('success, Transaksi telah ditambahkan');
     }
 
-    // public function verify(Request $request, Transaksi $transaksi){
-      
-    //     $transaksi = Transaksi::find($request)->first();
-    //     if($transaksi){
-    //         $transaksi->verify = '1';
-    //         $transaksi->save();
-    //     }
+    public function verify(Request $request){
+  
+     Transaksi::find($request->id)->update(['status'=>1]);
 
-    //     return redirect('/transaksi');
-    // }
+        return redirect('/transaksi');
+    }
 
     // public function block(Request $request){
        

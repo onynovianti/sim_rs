@@ -18,7 +18,7 @@ return new class extends Migration
             // $table->unsignedBigInteger('karyawan_id');
             $table->unsignedBigInteger('dokter_id');
             $table->unsignedBigInteger('pasien_id');
-            $table->integer('harga_obat');
+            $table->unsignedBigInteger('obat_id');
             $table->integer('status')->default(0);
             $table->timestamps();
         });
@@ -27,7 +27,7 @@ return new class extends Migration
             // $table->foreign('karyawan_id')->references('id')->on('karyawans');
             $table->foreign('pasien_id')->references('id')->on('pasiens');
             $table->foreign('dokter_id')->references('id')->on('dokters');
-            // $table->foreign('har_id')->references('id')->on('obats');
+            $table->foreign('obat_id')->references('id')->on('obats');
 
         });
     }

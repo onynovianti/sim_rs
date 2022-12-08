@@ -50,6 +50,7 @@ Route::post('/featureUpdate/{id}',[DiagnosaController::class,'featureUpdate']);
 Route::post('/diagnosa/save',[DiagnosaController::class,'save']);
 route::post('/diagnosa/save/{id}',[DiagnosaController::class,'save']);
 route::get('/diagnosa/update/{id}',[DiagnosaController::class,'update']);
+Route::put('/verify', [TransaksiController::class, 'verify']);
 // Route::get('get_obat_api',[ObatController::class,'callApi']);
 
 // DASHBOARD

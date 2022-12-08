@@ -21,11 +21,14 @@
                   Pasien
                 </th>
                 <th>
-                  Obat
+                  Harga Obat
                 </th>
                 <th>
-                  Total Harga
+                  Total
                 </th>
+                {{-- <th>
+                  Total Harga
+                </th> --}}
                 <th>
                   Status
                 </th>
@@ -34,19 +37,23 @@
             <tbody>
               @foreach ($item as $t)
               <tr>
+                {{-- {{ dd($t) }} --}}
                 <td>
-                    {{ $t->dokter->name }}
+                    {{ $t->dokter->namaLengkap }}
+                </td> 
+                <td>
+                    {{ $t->pasien->namaLengkap }}
                 </td>
                 <td>
-                    {{ $t->pasien->name }}
+                  {{ $t->obat->harga }}
                 </td>
                 <td>
-                    {{ $t->obat->harga }}
+                    {{ ($t->obat->harga)+50000 }}
                 </td>
                 <td>
-                  @if( $t->verify  === 0)
-                    <form action="/verify" method="get" class="d-inline">
-                      @csrf
+                  @if( $t->status  === 0)
+                    <form action="/verify" method="post" class="d-inline">
+                      @csrf @method('PUT')
                       <input type="hidden" name="id" value="{{ $t->id }}">
                       <button type="submit" class="btn btn-warning" >Verify</button>
                     </form>
@@ -55,21 +62,9 @@
                     <form action="/block" method="get" class="d-inline">
                       @csrf
                         <input type="hidden" name="id" value="{{ $t->id }}">
-                        <button type="submit" class="btn btn-success" >Verified</button>
+                        <button type="submit" class="btn btn-success" disabled>Verified</button>
                     </form>
                   @endif
-                </td>
-                <td>
-                  <form action="/pasien/{{ $p->id }}" method="POST">
-                    {{-- Update  --}}
-                    <a type="button" href="/pasien/{{ $p->id }}/edit" class="btn btn-warning btn-rounded btn-icon btn-sm"><i class="mdi mdi-lead-pencil"></i></a>
-                    @method("delete")
-                    @csrf
-                    {{-- Delete  --}}
-                    <button type="submit" class="btn btn-danger btn-rounded btn-icon btn-sm">
-                      <i class="mdi mdi-delete-forever"></i>
-                    </button>
-                  </form> 
                 </td>
               </tr>
               @endforeach

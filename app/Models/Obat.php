@@ -15,4 +15,9 @@ class Obat extends Model
         'harga',
         'tanggalKadaluarsa'
     ];
+
+    public function transaksi()
+    {
+        return $this->hasMany(Transaksi::class);
+    }
 }

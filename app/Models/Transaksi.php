@@ -12,6 +12,12 @@ use App\Models\Obat;
 class Transaksi extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'dokter_id',
+        'pasien_id',
+        'obat_id',
+        'status',
+    ];
 
     public function pasien(){
         return $this->belongsTo(Pasien::class);
