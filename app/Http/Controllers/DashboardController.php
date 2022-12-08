@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
-
 use Illuminate\Http\Request;
+use App\Models\Pasien;
+use App\Models\Obat;
 
 class DashboardController extends Controller
 {
@@ -19,6 +20,34 @@ class DashboardController extends Controller
              'jml_dokter' => DB::table('dokters')->count(),
              'jml_karyawan' => DB::table('karyawans')->count(),
              'jml_pasien' => DB::table('pasiens')->count(),
+            //  'jml_pasien' => Pasien::get()->count(),
+            //  'pasien_laki' => DB::select(DB::raw("SELECT count(*) as jumlah FROM pasiens WHERE jenisKelamin = 1")),
+            //  'pasien_wanita' => DB::select(DB::raw("SELECT count(*) as jumlah FROM pasiens WHERE jenisKelamin = 0")),
+             'pasien_laki' => Pasien::where('jenisKelamin','1')->count(),
+             'pasien_wanita' => Pasien::where('jenisKelamin','0')->count(),
+             'jml_obat' => DB::table('obats')->count(),
+             'obat_diatas' => Obat::where('harga','>','50')->count(),
+             'obat_dibawah' => Obat::where('harga','<','50')->count(),
         ]);
+     }
+
+     // GET DATA
+     public function getChartPasien($val){
+        if($val == 'year'){
+            $syntax = "SELECT MONTH(created_at) as Bulan, COUNT(alamat) as Jumlah FROM pasiens WHERE YEAR(created_at) = '2022' GROUP BY MONTH(created_at)";
+        }else if($val == 'month'){
+            $syntax = "SELECT MONTH(created_at) as Bulan, COUNT(alamat) as Jumlah FROM pasiens WHERE YEAR(created_at) = '2022' GROUP BY MONTH(created_at)";
+        }else{
+            $syntax = "SELECT COUNT(*) FROM pasiens WHERE YEAR(created_at) = '2022' GROUP BY MONTH(created_at)";
+        }
+        return DB::select(DB::raw($syntax));
+     }
+
+     // GET DATA
+     public function getChartObat($val){
+        if($val == 'year'){
+            $syntax = "SELECT MONTH(created_at) as Bulan, COUNT(*) as Jumlah FROM obats WHERE YEAR(created_at) = '2022' GROUP BY MONTH(created_at)";
+        }
+        return DB::select(DB::raw($syntax));
      }
 }

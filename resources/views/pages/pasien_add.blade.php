@@ -9,7 +9,7 @@
         <p class="card-description">
           Personal info
         </p>
-        {{-- penambahan data pasien --}}
+        {{-- penambahan data role karyawan pada pasien --}}
         <div class="row">
           <div class="col-md-6">
             <div class="form-group row">
