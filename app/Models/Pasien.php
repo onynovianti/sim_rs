@@ -15,4 +15,6 @@ class Pasien extends Model
         'jenisKelamin',
         'tanggalLahir'
     ];
+
+    protected $guarded = ['id'];
 }

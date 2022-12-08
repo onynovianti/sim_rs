@@ -12,6 +12,7 @@ use App\Http\Controllers\DiagnosaController;
 use App\Http\Controllers\PenyakitController;
 use App\Http\Controllers\PasienController;
 use App\Http\Controllers\ObatController;
+use App\Http\Controllers\PdfController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,7 +39,7 @@ Route::resource('/obat', ObatController::class);
 Route::resource('/add_sakit', DiagnosaController::class);
 Route::post('/auth',[AuthController::class,'store']);
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
 Route::get('/penyakit', [PenyakitController::class, 'index'])->name('penyakit');
 Route::get('/diagnosa/session/{id}', [DiagnosaController::class, 'add']);
 Route::post('getSession',[ApiController::class,'callApi']);
@@ -47,3 +48,9 @@ Route::post('/diagnosa/save',[DiagnosaController::class,'save']);
 route::post('/diagnosa/save/{id}',[DiagnosaController::class,'save']);
 route::get('/diagnosa/update/{id}',[DiagnosaController::class,'update']);
 // Route::get('get_obat_api',[ObatController::class,'callApi']);
+
+// DASHBOARD
+Route::get('/getChartPasien/{id}', [DashboardController::class, 'getChartPasien']);
+Route::get('/getChartObat/{id}', [DashboardController::class, 'getChartObat']);
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/pdf', [PdfController::class, 'index']);
