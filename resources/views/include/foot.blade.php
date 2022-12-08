@@ -16,12 +16,16 @@
 <!-- endinject -->
 <!-- Custom js for this page-->
 <script src="{{ asset('assets/js/jquery.cookie.js" type="text/javascript')}}"></script>
-<script src="{{ asset('assets/js/dashboard.js')}}"></script>
-<script src="{{ asset('assets/js/Chart.roundedBarCharts.js')}}"></script>
+{{-- <script src="{{ asset('assets/js/dashboard.js')}}"></script> --}}
+{{-- <script src="{{ asset('assets/js/Chart.roundedBarCharts.js')}}"></script> --}}
+<script src="{{ asset('assets/js/chart_dashboard.js')}}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="{{ asset('assets/html2pdf/dist/html2pdf.bundle.min.js')}}"></script>
+
         
         <script>
         $(document).ready(function(){
+
             $('#search').keyup(function(){
 
             // Search text
@@ -32,6 +36,11 @@
 
             // Search and show
             $('.content:contains("'+text+'")').show();
+            });
+
+            $("#export").click(function(){
+                var element = document.getElementById('body');
+                html2pdf().from(element).save('report.pdf');
             });
         });
         </script>

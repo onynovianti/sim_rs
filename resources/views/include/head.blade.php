@@ -18,3 +18,14 @@
   <link rel="stylesheet" href="{{ asset('assets/css/vertical-layout-light/style.css')}}">
   <!-- endinject -->
   <link rel="shortcut icon" href="{{ asset('assets/images/logo.svg')}}" />
+  {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script> --}}
+  <style>
+    html2canvas {
+     width: 100px !important;
+     height: 200px !important;
+}
+
+body {
+  background-color: coral;
+}
+    </style>
