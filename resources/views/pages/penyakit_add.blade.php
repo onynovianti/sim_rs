@@ -18,13 +18,13 @@
                                 echo "Kosong";
                             } else { ?>
                                 @foreach ($fiturGejala as $j)
-                                <tr class="content">
+                                <ul class="content">
                                     <form id="deleteFeature" class="form-sample" method="POST" action="featureDelete">@csrf
                                         <td>{{ $j['name'] }} <input type="hidden" value="{{ $j['name'] }}" name="nama"></td>
                                         <td>{{ $j['value'] }} <input type="hidden" value="{{ $j['value'] }}" name="nilai"></td>
                                         <td><a onclick="document.getElementById('deleteFeature').submit()" class="btn btn-danger btn-xs" href="">x</a></td>
                                     </form>
-                                </tr>
+                                </ul>
                                 @endforeach
                             <?php }
                             ?>
@@ -60,8 +60,20 @@
                     <ol>Diagnosis yang mungkin : </ol><br>
                     <table class="table">
                         <tr>
-                            <td>1</td>
-                            <td>Arterial hypertension (chronic) secondary to obesity</td>
+                            <?php
+                            if ($diagnosisPenyakit == "Kosong") {
+                                echo "Kosong";
+                            } else { ?>
+                                @foreach ($diagnosisPenyakit as $j => $v)
+                                <ul class="content">
+                                    <form id="deleteFeature" class="form-sample" method="POST" action="featureDelete">@csrf
+                                        <td>{{ $j['name'] }} <input type="hidden" value="{{ $j['name'] }}" name="nama"></td>
+                                        <td><a onclick="document.getElementById('deleteFeature').submit()" class="btn btn-danger btn-xs" href="">x</a></td>
+                                    </form>
+                                </ul>
+                                @endforeach
+                            <?php }
+                            ?>
                             <td><a class="btn btn-primary btn-xs" href="" data-toggle="tooltip" data-placement="bottom" title="Tambahkan ke Rekam Medis">-></a></td>
                         </tr>
                     </table><hr>
