@@ -4,9 +4,9 @@
 <div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title">Daftar Pasien</h4>
+        <h4 class="card-title">Transaksi</h4>
         <p class="card-description">
-          <a href="/pasien/create" class="btn btn-primary float-end btn-sm" style="margin-right: 10px">+ Tambah</a><br>
+          <a href="/transaksi/create" class="btn btn-primary float-end btn-sm" style="margin-right: 10px">+ Tambah</a><br>
         </p>
         {{-- tampilan data pasien pada rute karyawan  --}}
         <div class="table-responsive">
@@ -15,39 +15,49 @@
             <thead>
               <tr>
                 <th>
-                  Nama Lengkap
+                  Dokter
                 </th>
                 <th>
-                    Jenis Kelamin
+                  Pasien
                 </th>
                 <th>
-                  Kontak
+                  Obat
                 </th>
                 <th>
-                  Aksi
+                  Total Harga
+                </th>
+                <th>
+                  Status
                 </th>
               </tr>
             </thead>
             <tbody>
-              @foreach ($item as $p)
+              @foreach ($item as $t)
               <tr>
                 <td>
-                  {{ $p->namaLengkap }}
+                    {{ $t->dokter->name }}
                 </td>
                 <td>
-                    <?php
-                    if ($p->jenisKelamin == 0) {
-                        echo "Laki-laki";
-                    } else {
-                        echo "Perempuan";
-                    }
-                    ?>
-                  </td>
+                    {{ $t->pasien->name }}
+                </td>
                 <td>
-                  <i class="menu-icon mdi mdi-phone"></i>
-                  {{ $p->noHp }} <hr>
-                  <i class="menu-icon mdi mdi-home-map-marker"></i>
-                  {{ $p->alamat }}
+                    {{ $t->obat->harga }}
+                </td>
+                <td>
+                  @if( $t->verify  === 0)
+                    <form action="/verify" method="get" class="d-inline">
+                      @csrf
+                      <input type="hidden" name="id" value="{{ $t->id }}">
+                      <button type="submit" class="btn btn-warning" >Verify</button>
+                    </form>
+                    
+                  @else
+                    <form action="/block" method="get" class="d-inline">
+                      @csrf
+                        <input type="hidden" name="id" value="{{ $t->id }}">
+                        <button type="submit" class="btn btn-success" >Verified</button>
+                    </form>
+                  @endif
                 </td>
                 <td>
                   <form action="/pasien/{{ $p->id }}" method="POST">
@@ -59,7 +69,7 @@
                     <button type="submit" class="btn btn-danger btn-rounded btn-icon btn-sm">
                       <i class="mdi mdi-delete-forever"></i>
                     </button>
-                  </form>
+                  </form> 
                 </td>
               </tr>
               @endforeach

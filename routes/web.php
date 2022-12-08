@@ -11,8 +11,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DiagnosaController;
 use App\Http\Controllers\PenyakitController;
 use App\Http\Controllers\PasienController;
+use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\ObatController;
-use App\Http\Controllers\PdfController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,12 +35,15 @@ Route::resource('/apoteker', ApotekerController::class);
 Route::resource('/karyawan', KaryawanController::class);
 Route::resource('/diagnosa', DiagnosaController::class);
 Route::resource('/pasien', PasienController::class);
+Route::resource('/transaksi', TransaksiController::class);
 Route::resource('/obat', ObatController::class);
 Route::resource('/add_sakit', DiagnosaController::class);
 Route::post('/auth',[AuthController::class,'store']);
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/penyakit', [PenyakitController::class, 'index'])->name('penyakit');
+Route::get('/add_sakit', [PenyakitController::class, 'add']);
+Route::post('get_medical_api/{id}',[ApiController::class,'callApi']); 
 Route::get('/diagnosa/session/{id}', [DiagnosaController::class, 'add']);
 Route::post('getSession',[ApiController::class,'callApi']);
 Route::post('/featureUpdate/{id}',[DiagnosaController::class,'featureUpdate']);
@@ -54,3 +57,4 @@ Route::get('/getChartPasien/{id}', [DashboardController::class, 'getChartPasien'
 Route::get('/getChartObat/{id}', [DashboardController::class, 'getChartObat']);
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('/pdf', [PdfController::class, 'index']);
+
