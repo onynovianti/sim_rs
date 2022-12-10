@@ -104,16 +104,16 @@ class DiagnosaController extends Controller
         $patient = Diagnosa::find($id);
         $path = storage_path() . "/json/SymptomsOutput.json"; // ie: /var/www/laravel/app/storage/json/filename.json
         $feature = json_decode(file_get_contents($path), true);
-        if ($patient->fiturGejala == '0') {
+        if ($patient->fiturGejala == null) {
             $fiturGejala =  "Kosong";
         } else {
-            $fiturGejala = json_decode($patient->fiturGejala);
+            $fiturGejala = $patient->fiturGejala->json();
         };
 
-        if ($patient->diagnosisPenyakit == '0') {
+        if ($patient->diagnosisPenyakit == null) {
             $diagnosisPenyakit = "Kosong";
         } else {
-            $diagnosisPenyakit = json_decode($patient->diagnosisPenyakit);
+            $diagnosisPenyakit = $patient->diagnosisPenyakit->json();
         };
 
         return view('pages.penyakit_add', [
@@ -133,15 +133,32 @@ class DiagnosaController extends Controller
             'value' => $request->nilai
         ]);
 
-        $data = json_encode([
-            'name' => $request->nama,
-            'value' => $request->nilai
-        ]);
+        $data = json_decode($patient->fiturGejala);
 
-        $patient->fiturGejala = $data;
+        $data2 = [];
+        if ($data == null) {
+            $data2[] = [
+                'name' => $request->nama,
+                'value' => $request->nilai
+            ];
+        } else {
+            foreach ($data as $j) {
+                $data2[] = [
+                    'name' => $j['name'],
+                    'value' => $j['value']
+                ];
+            }
+            $data2[] = [
+                'name' => $request->nama,
+                'value' => $request->nilai
+            ];
+        }
+
+        $patient->fiturGejala = json_encode($data2);
         $patient->save();
-        $url = '/diagnosis/session/';
-        $returnUrl = $url .= $id;
-        return view($returnUrl);
+
+        return view('pages.penyakit_add', [
+            'fiturGejala' => $patient->fiturGejala,
+        ])->with(['id' => $id]);
     }
 }
