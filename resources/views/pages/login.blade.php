@@ -32,7 +32,7 @@
             <div class="auth-form-light text-left py-5 px-4 px-sm-5">
               <div class="brand-logo">
                 <img src="{{ asset('assets/images/logo.svg')}}" alt="logo"> SIMRS
-              </div>
+              </div> 
               <h4>Hello! let's get started</h4>
               <h6 class="fw-light">Sign in to continue.</h6>
               @if(session('error_username'))

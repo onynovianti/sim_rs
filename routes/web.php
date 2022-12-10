@@ -61,6 +61,7 @@ Route::put('/verify', [TransaksiController::class, 'verify']);
 // DASHBOARD
 Route::get('/getChartPasien/{id}', [DashboardController::class, 'getChartPasien']);
 Route::get('/getChartObat/{id}', [DashboardController::class, 'getChartObat']);
+Route::get('/getChartTransaksi/{id}', [DashboardController::class, 'getChartTransaksi']);
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('/pdf', [PdfController::class, 'index']);
 
