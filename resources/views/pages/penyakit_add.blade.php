@@ -12,22 +12,20 @@
 
                  <ul><br><br><hr>
                     <ol>Gejala yang ditambahkan</ol><br><br>
+                    {{-- {{ dd(json_decode($fiturGejala)) }} --}}
                     <table class="table">
-                        <?php
-                            if ($fiturGejala == "Kosong") {
-                                echo "Kosong";
-                            } else { ?>
+                        @if($fiturGejala)
                                 @foreach ($fiturGejala as $j)
                                 <ul class="content">
-                                    <form id="deleteFeature" class="form-sample" method="POST" action="featureDelete">@csrf
-                                        <td>{{ $j['name'] }} <input type="hidden" value="{{ $j['name'] }}" name="nama"></td>
-                                        <td>{{ $j['value'] }} <input type="hidden" value="{{ $j['value'] }}" name="nilai"></td>
-                                        <td><a onclick="document.getElementById('deleteFeature').submit()" class="btn btn-danger btn-xs" href="">x</a></td>
-                                    </form>
-                                </ul>
+                                        <form id="deleteFeature" class="form-sample" method="POST" action="featureDelete">@csrf
+                                            <td>{{ $j['name'] }} <input type="hidden" value="{{ $j['name'] }}" name="nama"></td>
+                                            <td>{{ $j['value'] }} <input type="hidden" value="{{ $j['value'] }}" name="nilai"></td>
+                                            <td><a onclick="document.getElementById('deleteFeature').submit()" class="btn btn-danger btn-xs" href="">x</a></td>
+                                        </form>
+                                    </ul>
                                 @endforeach
-                            <?php }
-                            ?>
+
+                        @endif
                         {{-- @foreach ($fiturGejala as $j)
                         <tr class="content">
                             <form id="deleteFeature" class="form-sample" method="POST" action="featureDelete">@csrf
@@ -61,7 +59,7 @@
                     <table class="table">
                         <tr>
                             <?php
-                            if ($diagnosisPenyakit == "Kosong") {
+                            if ($diagnosisPenyakit == null) {
                                 echo "Kosong";
                             } else { ?>
                                 @foreach ($diagnosisPenyakit as $j => $v)
@@ -114,7 +112,7 @@
                     @foreach ($feature as $j)
                       {{-- @foreach ($j['name'] as $i) --}}
                       <tr class="content">
-                        <form class="form-sample" method="POST" action="/featureUpdate/{{ $patient->id }}">@csrf
+                        <form class="form-sample" method="POST" action="/diagnosa/session/{{ $patient->id }}">@csrf
                         <td>{{ $j['name'] }} <input type="hidden" value="{{ $j['name'] }}" name="nama"></td>
                         <td>
                           @isset($j['min'])

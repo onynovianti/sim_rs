@@ -99,22 +99,20 @@ class DiagnosaController extends Controller
 
     public function add(Request $request, $id)
     {
-        $fiturGejala = "0";
-        $diagnosisPenyakit = "0";
         $patient = Diagnosa::find($id);
+        $fiturGejala = json_decode($patient->fiturGejala, true);
+        $diagnosisPenyakit = json_decode($patient->diagnosisPenyakit);
         $path = storage_path() . "/json/SymptomsOutput.json"; // ie: /var/www/laravel/app/storage/json/filename.json
         $feature = json_decode(file_get_contents($path), true);
         if ($patient->fiturGejala == null) {
             $fiturGejala =  "Kosong";
-        } else {
-            $fiturGejala = $patient->fiturGejala->json();
         };
 
         if ($patient->diagnosisPenyakit == null) {
             $diagnosisPenyakit = "Kosong";
-        } else {
-            $diagnosisPenyakit = $patient->diagnosisPenyakit->json();
         };
+
+        $this->featureUpdate($request, $id);
 
         return view('pages.penyakit_add', [
             'patient' => $patient,
@@ -142,12 +140,12 @@ class DiagnosaController extends Controller
                 'value' => $request->nilai
             ];
         } else {
-            foreach ($data as $j) {
-                $data2[] = [
-                    'name' => $j['name'],
-                    'value' => $j['value']
-                ];
-            }
+            // foreach ($data as $j) {
+            //     $data2[] = [
+            //         'name' => $j['name'],
+            //         'value' => $data['value']
+            //     ];
+            // }
             $data2[] = [
                 'name' => $request->nama,
                 'value' => $request->nilai
@@ -156,9 +154,14 @@ class DiagnosaController extends Controller
 
         $patient->fiturGejala = json_encode($data2);
         $patient->save();
+    }
 
-        return view('pages.penyakit_add', [
-            'fiturGejala' => $patient->fiturGejala,
-        ])->with(['id' => $id]);
+    public function analyzeFeature($id, Request $request) {
+        $patient = Diagnosa::find($id);
+        Http::get('https://api.endlessmedical.com/v1/dx/Analyze' , [
+            'SessionID' => $patient->sessionID,
+            'NumberOfResults' => 10,
+            'ResponseFormat' => 'json',
+        ]);
     }
 }
