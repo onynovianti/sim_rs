@@ -29,6 +29,7 @@ Route::get('/', function () {
     return view('pages/login');
 });
 
+//RESOURCES
 Route::resource('/admin', AdminController::class);
 Route::resource('/dokter', DokterController::class);
 Route::resource('/apoteker', ApotekerController::class);
@@ -38,18 +39,22 @@ Route::resource('/pasien', PasienController::class);
 Route::resource('/transaksi', TransaksiController::class);
 Route::resource('/obat', ObatController::class);
 Route::resource('/add_sakit', DiagnosaController::class);
+
+//CREDS
 Route::post('/auth',[AuthController::class,'store']);
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/penyakit', [PenyakitController::class, 'index'])->name('penyakit');
 Route::get('/add_sakit', [PenyakitController::class, 'add']);
-Route::post('get_medical_api/{id}',[ApiController::class,'callApi']); 
-Route::get('/diagnosa/session/{id}', [DiagnosaController::class, 'add']);
-Route::post('getSession',[ApiController::class,'callApi']);
+
+//DIAGNOSA
+Route::post('/diagnosa/session/{id}', [DiagnosaController::class, 'add']);
 Route::post('/featureUpdate/{id}',[DiagnosaController::class,'featureUpdate']);
 Route::post('/diagnosa/save',[DiagnosaController::class,'save']);
 route::post('/diagnosa/save/{id}',[DiagnosaController::class,'save']);
 route::get('/diagnosa/update/{id}',[DiagnosaController::class,'update']);
+
+//TRANSAKSI
 Route::put('/verify', [TransaksiController::class, 'verify']);
 // Route::get('get_obat_api',[ObatController::class,'callApi']);
 
