@@ -10,9 +10,9 @@ use App\Models\Diagnosa;
 
 class ApiController extends Controller
 {
-    public function __construct(){
-        return $this->middleware('dokter') && $this->middleware('login');
-    }
+    // public function __construct(){
+    //     return $this->middleware('dokter') && $this->middleware('login');
+    // }
 
     public function callApi($id, Request $request){
         $ses_id = Http::get('https://api.endlessmedical.com/v1/dx/InitSession');
