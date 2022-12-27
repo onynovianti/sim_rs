@@ -8,9 +8,9 @@ use App\Models\Obat;
 
 class DashboardController extends Controller
 {
-    public function __construct(){
-        return $this->middleware('login');
-    }
+    // public function __construct(){
+    //     return $this->middleware('login');
+    // }
 
     // Dashboard
     public function index(){

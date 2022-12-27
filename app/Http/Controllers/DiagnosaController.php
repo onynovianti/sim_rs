@@ -7,14 +7,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Diagnosa;
 use App\Models\Pasien;
+use App\Models\Gejala;
+use App\Models\Penyakit;
 use Alert;
 
 class DiagnosaController extends Controller
 {
-    public function __construct()
-    {
-        return $this->middleware('dokter') && $this->middleware('login');
-    }
+    // public function __construct()
+    // {
+    //     return $this->middleware('dokter') && $this->middleware('login');
+    // }
 
     public function show()
     {
@@ -78,10 +80,14 @@ class DiagnosaController extends Controller
     public function update(Request $request, $id)
     {
         $ses_id = Http::get('https://api.endlessmedical.com/v1/dx/InitSession');
+        Http::asForm()->post('https://api.endlessmedical.com/v1/dx/AcceptTermsOfUse' , [
+            'SessionID' => $ses_id['SessionID'],
+            'passphrase' => 'I have read, understood and I accept and agree to comply with the Terms of Use of EndlessMedicalAPI and Endless Medical services. The Terms of Use are available on endlessmedical.com',
+        ]);
 
         // Menyimpan update
         $user = Diagnosa::find($id);
-        $user->sessionID = $ses_id['SessionID'];
+        $user->diagnosisPenyakit = $request->name;
         $user->save();
 
         // toast('Your data has been saved!','success');
@@ -97,71 +103,87 @@ class DiagnosaController extends Controller
         return redirect("/diagnosa"); // untuk diarahkan kemana
     }
 
-    public function add(Request $request, $id)
+    public function add($id)
     {
-        $patient = Diagnosa::find($id);
-        $fiturGejala = json_decode($patient->fiturGejala, true);
-        $diagnosisPenyakit = json_decode($patient->diagnosisPenyakit);
-        $path = storage_path() . "/json/SymptomsOutput.json"; // ie: /var/www/laravel/app/storage/json/filename.json
-        $feature = json_decode(file_get_contents($path), true);
-        if ($patient->fiturGejala == null) {
+        $diagnosa = Diagnosa::find($id);
+        $fiturGejala = Diagnosa::find($id)->gejalas;
+        $diagnosisPenyakit = Diagnosa::find($id)->penyakits;
+        $diseases = storage_path() . "/json/DiseasesOutput.json"; // ie: /var/www/laravel/app/storage/json/filename.json
+        $ouput = json_decode(file_get_contents($diseases), true);
+        $symptom = storage_path() . "/json/SymptomsOutput.json"; // ie: /var/www/laravel/app/storage/json/filename.json
+        $feature = json_decode(file_get_contents($symptom), true);
+        if ($fiturGejala == null) {
             $fiturGejala =  "Kosong";
         };
 
-        if ($patient->diagnosisPenyakit == null) {
-            $diagnosisPenyakit = "Kosong";
-        };
-
-        $this->featureUpdate($request, $id);
+        // if ($diagnosisPenyakit == null) {
+        //     $diagnosisPenyakit = "Kosong";
+        // };
 
         return view('pages.penyakit_add', [
-            'patient' => $patient,
+            'output' => $ouput,
+            'diagnosa' => $diagnosa,
             'feature' => $feature,
             'fiturGejala' => $fiturGejala,
             'diagnosisPenyakit' => $diagnosisPenyakit,
         ]);
     }
 
+    // Create Gejala
+    public function tambahGejala($id, Request $request)
+    {
+        $validatedData=$request->validate([
+            'idDiag' => 'required',
+            'name' => 'required',
+            'value' => 'required',
+        ]);
+
+        Gejala::create($validatedData); //untuk menyimpan data
+
+        return $this->add($id);
+    }
+
     public function featureUpdate(Request $request, $id)
     {
-        $patient = Diagnosa::find($id);
         Http::post('https://api.endlessmedical.com/v1/dx/UpdateFeature', [
-            'SessionID' => $patient->sessionID,
+            'SessionID' => $id,
             'name' => $request->nama,
             'value' => $request->nilai
         ]);
 
-        $data = json_decode($patient->fiturGejala);
+        // $data = json_decode($patient->fiturGejala);
 
-        $data2 = [];
-        if ($data == null) {
-            $data2[] = [
-                'name' => $request->nama,
-                'value' => $request->nilai
-            ];
-        } else {
-            // foreach ($data as $j) {
-            //     $data2[] = [
-            //         'name' => $j['name'],
-            //         'value' => $data['value']
-            //     ];
-            // }
-            $data2[] = [
-                'name' => $request->nama,
-                'value' => $request->nilai
-            ];
-        }
+        // $data2 = [];
+        // // if ($data == null) {
+        // //     $data2[] = [
+        // //         'name' => $request->nama,
+        // //         'value' => $request->nilai
+        // //     ];
+        // // } else {
+        // //     foreach ($data as $j) {
+        // //         $data2[] = [
+        // //             'name' => $j['name'],
+        // //             'value' => $data['value']
+        // //         ];
+        // //     }
+        // //     $data2[] = [
+        // //         'name' => $request->nama,
+        // //         'value' => $request->nilai
+        // //     ];
+        // // }
 
-        $patient->fiturGejala = json_encode($data2);
-        $patient->save();
+        // $patient->fiturGejala = json_encode($data2);
+        // $patient->save();
     }
 
-    public function analyzeFeature($id, Request $request) {
-        $patient = Diagnosa::find($id);
-        Http::get('https://api.endlessmedical.com/v1/dx/Analyze' , [
-            'SessionID' => $patient->sessionID,
-            'NumberOfResults' => 10,
-            'ResponseFormat' => 'json',
+    public function tambahPenyakit(Request $request, $id){
+        $validatedData=$request->validate([
+            'idDiag' => 'required',
+            'penyakit' => 'required',
         ]);
+
+        Penyakit::create($validatedData); //untuk menyimpan data
+
+        return $this->add($id);
     }
 }

@@ -35,11 +35,11 @@
                 </td>
                 <td>
                   <form action="/diagnosa/{{ $i->id }}" method="POST">
-                    {{-- Update  --}}
+                    {{-- Get ID  --}}
                     <a type="button" href="/diagnosa/update/{{ $i->id }}" class="btn btn-warning btn-rounded btn-icon btn-sm"><i class="mdi mdi-refresh"></i></a>
                     @method("POST")
                     @csrf
-                    {{-- Delete  --}}
+                    {{-- Diagnosa  --}}
                     <a type="button" href="/diagnosa/session/{{ $i->id }}" class="btn btn-warning btn-rounded btn-icon btn-sm"><i class="mdi mdi-lead-pencil"></i></a>
                     @csrf
                     </form>

@@ -9,9 +9,17 @@ class Diagnosa extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'sessionID',
         'namaLengkap',
-        'fiturGejala',
         'diagnosisPenyakit'
     ];
+
+    public function gejalas()
+    {
+        return $this->hasMany(Gejala::class, 'idDiag', 'id');
+    }
+
+    public function penyakits()
+    {
+        return $this->hasMany(Penyakit::class, 'idDiag', 'id');
+    }
 }

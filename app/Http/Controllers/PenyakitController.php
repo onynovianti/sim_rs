@@ -47,4 +47,12 @@ class PenyakitController extends Controller
         ]);
     }
 
+    public function destroy(Request $request, $id){
+        $data = Penyakit::find($id);
+        Penyakit::destroy($id);
+        // Session::flash('hapussuccess', 'Data berhasil dihapus!');
+        // toast('Your data has been deleted!','success');
+        return redirect("/diagnosa/session/$data->idDiag"); // untuk diarahkan kemana
+    }
+
 }
