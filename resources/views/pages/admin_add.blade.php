@@ -7,7 +7,7 @@
       <h4 class="card-title">Tambah Administrator</h4>
       <form class="form-sample" method="POST" action="/admin">@csrf
         <p class="card-description">
-          Personal info
+          Personal info 
         </p>
         <div class="row">
           <div class="col-md-6">

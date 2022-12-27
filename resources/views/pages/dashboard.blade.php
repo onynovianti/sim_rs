@@ -78,7 +78,7 @@
                           </div>
                           <div class="d-none d-md-block">
                             <p class="statistics-title">Jumlah Transaksi</p>
-                            <h3 class="rate-percentage">137</h3>
+                            <h3 class="rate-percentage">{{ $jml_transaksi }}</h3>
                             {{-- <p class="text-success d-flex"><i class="mdi mdi-menu-down"></i><span>+0.8%</span></p> --}}
                           </div>
                         </div>
@@ -264,171 +264,8 @@
                     </div>
                   </div>
                   {{-- END PENGGUNA  --}}
-                  {{-- OBAT  --}}
-                  <div class="tab-pane fade" id="obat" role="tabpanel" aria-labelledby="overview"> 
-                    <div class="row">
-                      <div class="col-sm-12 no-print">
-                        <div class="statistics-details d-flex align-items-center justify-content-between">
-                          <div>
-                            <p class="statistics-title">Administrator</p>
-                            <h3 class="rate-percentage">{{ $jml_admin }}</h3>
-                            {{-- <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>Orang</span></p> --}}
-                          </div>
-                          <div>
-                            <p class="statistics-title">Apoteker</p>
-                            <h3 class="rate-percentage">{{ $jml_apoteker }}</h3>
-                            {{-- <p class="text-success d-flex"><i class="mdi mdi-menu-up"></i><span>+0.1%</span></p> --}}
-                          </div>
-                          <div>
-                            <p class="statistics-title">Dokter</p>
-                            <h3 class="rate-percentage">{{ $jml_dokter }}</h3>
-                            {{-- <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>68.8</span></p> --}}
-                          </div>
-                          <div class="d-none d-md-block">
-                            <p class="statistics-title">Karyawan</p>
-                            <h3 class="rate-percentage">{{ $jml_karyawan }}</h3>
-                            {{-- <p class="text-success d-flex"><i class="mdi mdi-menu-down"></i><span>+0.8%</span></p> --}}
-                          </div>
-                          <div class="d-none d-md-block">
-                            <p class="statistics-title">Pasien Terdaftar</p>
-                            <h3 class="rate-percentage">{{ $jml_pasien }}</h3>
-                            {{-- <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>68.8</span></p> --}}
-                          </div>
-                          <div class="d-none d-md-block">
-                            <p class="statistics-title">Jumlah Transaksi</p>
-                            <h3 class="rate-percentage">137</h3>
-                            {{-- <p class="text-success d-flex"><i class="mdi mdi-menu-down"></i><span>+0.8%</span></p> --}}
-                          </div>
-                        </div>
-                      </div>
-                    </div> 
-                    <div class="row">
-                      <div class="col-lg-8 d-flex flex-column">
-                        <div class="row flex-grow">
-                          <div class="col-12 grid-margin stretch-card">
-                            <div class="card card-rounded">
-                              <div class="card-body">
-                                <div class="d-sm-flex justify-content-between align-items-start">
-                                  <div>
-                                    <h4 class="card-title card-title-dash">Pendaftaran Obat</h4>
-                                   <p class="card-subtitle card-subtitle-dash">Grafik Pendaftaran Pasien Berdasarkan Tahun</p>
-                                  </div>
-                                  <div>
-                                    {{-- <div class="dropdown">
-                                      <button class="btn btn-secondary dropdown-toggle toggle-dark btn-lg mb-0 me-0" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> This Year </button>
-                                      <select class="form-select" id="chartchange">
-                                        <option href="#" selected value="year">This Year</option>
-                                        <option href="#" value="month">This Month</option>
-                                        <option href="#" value="week">This Week</option>
-                                      </select>
-                                    </div>  --}}
-                                  </div>
-                                </div>
-                                <div class="d-sm-flex align-items-center mt-1 justify-content-between">
-                                  <div class="d-sm-flex align-items-center mt-4 justify-content-between"><h2 class="me-2 fw-bold">110 Pasien Baru</h2><h4 class="me-2"></h4><h4 class="text-success"></h4></div>
-                                  <div class="me-3"><div id="marketing-overview-legend"></div></div>
-                                </div>
-                                <div class="chartjs-bar-wrapper mt-3">
-                                  <canvas id="barchart"></canvas>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div> 
-                      <div class="col-lg-4 d-flex flex-column">
-                        <div class="row flex-grow">
-                          <div class="col-md-6 col-lg-12 grid-margin stretch-card">
-                            <div class="card bg-primary card-rounded">
-                              <div class="card-body pb-0">
-                                <h4 class="card-title card-title-dash text-white mb-4">Kesimpulan</h4>
-                                <div class="row">
-                                  <div class="col-sm-4">
-                                    <p class="status-summary-ight-white mb-1">Jumlah Pasien Terdaftar</p>
-                                    <h2 class="text-info">{{ $jml_pasien }}</h2>
-                                  </div>
-                                  {{-- <div class="col-sm-8">
-                                    <div class="status-summary-chart-wrapper pb-4">
-                                      <canvas id="status-summary"></canvas>
-                                    </div>
-                                  </div> --}}
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-md-6 col-lg-12 grid-margin stretch-card">
-                            <div class="card card-rounded">
-                              <div class="card-body">
-                                <div class="row">
-                                  <div class="col-sm-6">
-                                    <div class="d-flex justify-content-between align-items-center mb-2 mb-sm-0">
-                                      <div class="circle-progress-width">
-                                        {{-- <div id="totalVisitors" class="progressbar-js-circle pr-2"></div> --}}
-                                      </div>
-                                      <div>
-                                        <p class="text-small mb-2">Laki-laki</p>
-                                        <h4 class="mb-0 fw-bold">{{ $pasien_laki }}</h4>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div class="col-sm-6">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                      <div class="circle-progress-width">
-                                        {{-- <div id="visitperday" class="progressbar-js-circle pr-2"></div> --}}
-                                      </div>
-                                      <div>
-                                        <p class="text-small mb-2">Perempuan</p>
-                                        <h4 class="mb-0 fw-bold">{{ $pasien_wanita }}</h4>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  {{-- END OBAT  --}}
                   {{-- TRANSAKSI  --}}
-                  <div class="tab-pane fade" id="transaksi" role="tabpanel" aria-labelledby="overview"> 
-                    <div class="row">
-                      <div class="col-sm-12 no-print">
-                        <div class="statistics-details d-flex align-items-center justify-content-between">
-                          <div>
-                            <p class="statistics-title">Administrator</p>
-                            <h3 class="rate-percentage">{{ $jml_admin }}</h3>
-                            {{-- <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>Orang</span></p> --}}
-                          </div>
-                          <div>
-                            <p class="statistics-title">Apoteker</p>
-                            <h3 class="rate-percentage">{{ $jml_apoteker }}</h3>
-                            {{-- <p class="text-success d-flex"><i class="mdi mdi-menu-up"></i><span>+0.1%</span></p> --}}
-                          </div>
-                          <div>
-                            <p class="statistics-title">Dokter</p>
-                            <h3 class="rate-percentage">{{ $jml_dokter }}</h3>
-                            {{-- <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>68.8</span></p> --}}
-                          </div>
-                          <div class="d-none d-md-block">
-                            <p class="statistics-title">Karyawan</p>
-                            <h3 class="rate-percentage">{{ $jml_karyawan }}</h3>
-                            {{-- <p class="text-success d-flex"><i class="mdi mdi-menu-down"></i><span>+0.8%</span></p> --}}
-                          </div>
-                          <div class="d-none d-md-block">
-                            <p class="statistics-title">Pasien Terdaftar</p>
-                            <h3 class="rate-percentage">{{ $jml_pasien }}</h3>
-                            {{-- <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>68.8</span></p> --}}
-                          </div>
-                          <div class="d-none d-md-block">
-                            <p class="statistics-title">Jumlah Transaksi</p>
-                            <h3 class="rate-percentage">137</h3>
-                            {{-- <p class="text-success d-flex"><i class="mdi mdi-menu-down"></i><span>+0.8%</span></p> --}}
-                          </div>
-                        </div>
-                      </div>
-                    </div> 
+                  <div class="" id="transaksi" role="tabpanel" aria-labelledby="overview"> 
                     <div class="row">
                       <div class="col-lg-8 d-flex flex-column">
                         <div class="row flex-grow">
@@ -437,8 +274,8 @@
                               <div class="card-body">
                                 <div class="d-sm-flex justify-content-between align-items-start">
                                   <div>
-                                    <h4 class="card-title card-title-dash">Pendaftaran Transaksi</h4>
-                                   <p class="card-subtitle card-subtitle-dash">Grafik Pendaftaran Pasien Berdasarkan Tahun</p>
+                                    <h4 class="card-title card-title-dash">Transaksi Dilakukan</h4>
+                                   <p class="card-subtitle card-subtitle-dash">Grafik Transaksi Berdasarkan Tahun</p>
                                   </div>
                                   <div>
                                     {{-- <div class="dropdown">
@@ -452,11 +289,11 @@
                                   </div>
                                 </div>
                                 <div class="d-sm-flex align-items-center mt-1 justify-content-between">
-                                  <div class="d-sm-flex align-items-center mt-4 justify-content-between"><h2 class="me-2 fw-bold">110 Pasien Baru</h2><h4 class="me-2"></h4><h4 class="text-success"></h4></div>
-                                  <div class="me-3"><div id="marketing-overview-legend"></div></div>
+                                  <div class="d-sm-flex align-items-center mt-4 justify-content-between"><h2 class="me-2 fw-bold">{{ $jml_transaksi }} Transaksi</h2><h4 class="me-2"></h4><h4 class="text-success"></h4></div>
+                                  <div class="me-3"><div id="marketing-overview-legend2"></div></div>
                                 </div>
                                 <div class="chartjs-bar-wrapper mt-3">
-                                  <canvas id="barchart"></canvas>
+                                  <canvas id="barcharttransaksi"></canvas>
                                 </div>
                               </div>
                             </div>
@@ -471,8 +308,8 @@
                                 <h4 class="card-title card-title-dash text-white mb-4">Kesimpulan</h4>
                                 <div class="row">
                                   <div class="col-sm-4">
-                                    <p class="status-summary-ight-white mb-1">Jumlah Pasien Terdaftar</p>
-                                    <h2 class="text-info">{{ $jml_pasien }}</h2>
+                                    <p class="status-summary-ight-white mb-1">Jumlah Transaksi</p>
+                                    <h2 class="text-info">{{ $jml_transaksi }}</h2>
                                   </div>
                                   {{-- <div class="col-sm-8">
                                     <div class="status-summary-chart-wrapper pb-4">
@@ -493,8 +330,8 @@
                                         {{-- <div id="totalVisitors" class="progressbar-js-circle pr-2"></div> --}}
                                       </div>
                                       <div>
-                                        <p class="text-small mb-2">Laki-laki</p>
-                                        <h4 class="mb-0 fw-bold">{{ $pasien_laki }}</h4>
+                                        <p class="text-small mb-2">Jumlah transaksi terverifikasi</p>
+                                        <h4 class="mb-0 fw-bold">{{ $transaksi_berhasil }}</h4>
                                       </div>
                                     </div>
                                   </div>
@@ -504,8 +341,8 @@
                                         {{-- <div id="visitperday" class="progressbar-js-circle pr-2"></div> --}}
                                       </div>
                                       <div>
-                                        <p class="text-small mb-2">Perempuan</p>
-                                        <h4 class="mb-0 fw-bold">{{ $pasien_wanita }}</h4>
+                                        <p class="text-small mb-2">Jumlah transaksi belum terverifikasi</p>
+                                        <h4 class="mb-0 fw-bold">{{ $transaksi_pending }}</h4>
                                       </div>
                                     </div>
                                   </div>
@@ -517,7 +354,7 @@
                       </div>
                     </div>
                   </div>
-                  {{-- END TRANSAKSI  --}}
+                  {{-- END Transaksi  --}}
                 </div>
               </div>
             </div>
