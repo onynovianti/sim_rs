@@ -9,10 +9,12 @@ use App\Http\Controllers\DokterController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DiagnosaController;
+use App\Http\Controllers\GejalaController;
 use App\Http\Controllers\PenyakitController;
 use App\Http\Controllers\PasienController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\ObatController;
+use App\Http\Middleware\admin;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,20 +41,25 @@ Route::resource('/pasien', PasienController::class);
 Route::resource('/transaksi', TransaksiController::class);
 Route::resource('/obat', ObatController::class);
 Route::resource('/add_sakit', DiagnosaController::class);
+Route::resource('/gejala', GejalaController::class);
 
 //CREDS
 Route::post('/auth',[AuthController::class,'store']);
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/penyakit', [PenyakitController::class, 'index'])->name('penyakit');
 Route::get('/add_sakit', [PenyakitController::class, 'add']);
 
 //DIAGNOSA
-Route::post('/diagnosa/session/{id}', [DiagnosaController::class, 'add']);
-Route::post('/featureUpdate/{id}',[DiagnosaController::class,'featureUpdate']);
+Route::post('/outputUpdate/{id}',[DiagnosaController::class,'outputUpdate']);
+Route::get('/diagnosa/session/{id}', [DiagnosaController::class, 'add']);
+Route::post('/featureUpdate/{id}',[DiagnosaController::class,'tambahGejala']);
 Route::post('/diagnosa/save',[DiagnosaController::class,'save']);
 route::post('/diagnosa/save/{id}',[DiagnosaController::class,'save']);
 route::get('/diagnosa/update/{id}',[DiagnosaController::class,'update']);
+
+//GEJALA
+Route::post('/gejala/{id}', [GejalaController::class, 'destroy']);
+Route::post('/penyakit/{id}', [PenyakitController::class, 'destroy']);
 
 //TRANSAKSI
 Route::put('/verify', [TransaksiController::class, 'verify']);

@@ -9,10 +9,10 @@ use Alert;
 
 class ApotekerController extends Controller
 {
-    public function __construct(){
-        return $this->middleware('admin') && $this->middleware('login');
-    }
-    
+    // public function __construct(){
+    //     return $this->middleware('admin') && $this->middleware('login');
+    // }
+
     // DASHBOARD
     public function index(){
        return view('pages.apoteker', [
