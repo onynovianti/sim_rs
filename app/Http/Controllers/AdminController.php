@@ -9,15 +9,15 @@ use Alert;
 
 class AdminController extends Controller
 {
-    public function __construct(){
-        return $this->middleware('admin') && $this->middleware('login');
-    }
-    
+    // public function __construct(){
+    //     return $this->middleware('admin') && $this->middleware('login');
+    // }
+
     // DASHBOARD
     public function index(){
        return view('pages.admin',[
             'item' => DB::table('admins')->paginate(10),
-       ]);  
+       ]);
     }
 
     // Tampilan Create Admin
@@ -39,7 +39,7 @@ class AdminController extends Controller
         ]);
         $validatedData=bcrypt($request->password);
         Admin::create($validatedData); //untuk menyimpan data
-        
+
         // toast('Registration has been successful','success');
         return redirect()->intended('/admin');
     }
@@ -51,7 +51,7 @@ class AdminController extends Controller
             'item' => Admin::find($id),
         ]);
     }
-        
+
     // Simpan Hasil Edit
     public function update(Request $request, $id){
         $validatedData=$request->validate([
@@ -74,7 +74,7 @@ class AdminController extends Controller
         $user->tempatLahir = $request->tempatLahir;
         $user->tanggalLahir = $request->tanggalLahir;
     	$user->save();
-    	
+
         // toast('Your data has been saved!','success');
     	return redirect("/admin"); // untuk diarahkan kemana
     }
@@ -85,5 +85,5 @@ class AdminController extends Controller
     	// Session::flash('hapussuccess', 'Data berhasil dihapus!');
         // toast('Your data has been deleted!','success');
     	return redirect("/admin"); // untuk diarahkan kemana
-    }  
+    }
 }

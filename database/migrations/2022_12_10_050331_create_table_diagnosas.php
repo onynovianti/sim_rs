@@ -15,10 +15,7 @@ return new class extends Migration
     {
         Schema::create('diagnosas', function (Blueprint $table) {
             $table->id();
-            $table->string('sessionID');
             $table->string('namaLengkap');
-            $table->json('fiturGejala');
-            $table->json('diagnosisPenyakit');
             $table->integer('harga');
             $table->timestamps();
         });

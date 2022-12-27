@@ -5,27 +5,27 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Dokter;
-use Alert; 
+use Alert;
 
 class DokterController extends Controller
 {
 
-    public function __construct(){
-        return $this->middleware('admin') && $this->middleware('login');
-    }
+    // public function __construct(){
+    //     return $this->middleware('admin') && $this->middleware('login');
+    // }
 
     // DASHBOARD
     public function index(){
         return view('pages.dokter',[
              'item' => DB::table('dokters')->paginate(10),
-        ]); 
+        ]);
      }
- 
+
      // Tampilan Create Dokter
      public function create(){
          return view('pages.dokter_add');
      }
- 
+
      // Create Dokter
      public function store(Request $request){
          $validatedData=$request->validate([
@@ -41,11 +41,11 @@ class DokterController extends Controller
          $validatedData['password']=bcrypt($validatedData['password']);
 
          Dokter::create($validatedData); //untuk menyimpan data
-         
+
          // toast('Registration has been successful','success');
          return redirect()->intended('/dokter');
      }
- 
+
      // Tampilan Edit
      public function edit($id){
          return view("pages.dokter_edit",[
@@ -53,7 +53,7 @@ class DokterController extends Controller
              'item' => Dokter::find($id),
          ]);
      }
-         
+
      // Simpan Hasil Edit
      public function update(Request $request, $id){
          $validatedData=$request->validate([
@@ -65,7 +65,7 @@ class DokterController extends Controller
              'tempatLahir' => 'required',
              'tanggalLahir' => 'required',
          ]);
- 
+
          // Menyimpan update
          $user = Dokter::find($id);
          $user->namaLengkap = $request->namaLengkap;
@@ -76,16 +76,16 @@ class DokterController extends Controller
          $user->tempatLahir = $request->tempatLahir;
          $user->tanggalLahir = $request->tanggalLahir;
          $user->save();
-         
+
          // toast('Your data has been saved!','success');
          return redirect("/dokter"); // untuk diarahkan kemana
      }
- 
+
      // Hapus Data User
      public function destroy(Request $request, $id){
         Dokter::destroy($id);
          // Session::flash('hapussuccess', 'Data berhasil dihapus!');
          // toast('Your data has been deleted!','success');
          return redirect("/dokter"); // untuk diarahkan kemana
-     } 
+     }
 }
