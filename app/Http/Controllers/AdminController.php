@@ -37,7 +37,7 @@ class AdminController extends Controller
             'tempatLahir' => 'required',
             'tanggalLahir' => 'required',
         ]);
-        $validatedData=bcrypt($request->password);
+        $validatedData['password']=bcrypt($request->password);
         Admin::create($validatedData); //untuk menyimpan data
 
         // toast('Registration has been successful','success');
